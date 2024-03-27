@@ -2,14 +2,12 @@
 import { toggledTheme } from "../lib/features/theme/theme";
 import { useSelector, useDispatch } from "react-redux";
 import { merriweather } from "../fonts";
+import { checkLogged } from "../lib/features/login/loginSlice";
+import Link from "next/link";
 
 export default function LoginPage() {
-  return (
-    <>
-      {/* <SigninLogin /> */}
-      <CreateLogin />
-    </>
-  );
+  const logged = useSelector((state) => state.login.logged);
+  return <>{logged ? <CreateLogin /> : <SigninLogin />}</>;
 }
 
 function SigninLogin() {
@@ -46,35 +44,61 @@ function SigninLogin() {
             <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
           </svg>
         </label>
-        <div className="flex flex-col justify-between" >
-          <h1 className="text-2xl lg:text-4xl font-semibold text-center">Welcome back to Readit</h1>
-          <p className="text-center mt-2 lg:mt-5 ">Sign in to explore, buy and manage books</p>
+        <div className="flex flex-col justify-between">
+          <h1 className="text-2xl lg:text-4xl font-semibold text-center">
+            Welcome back to Readit
+          </h1>
+          <p className="text-center mt-2 lg:mt-5 ">
+            Sign in to explore, buy and manage books
+          </p>
           <form className="flex flex-col gap-4 my-5">
-            <label htmlFor="text">Username :
-            <input type="text" placeholder="Username" className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"/>
+            <label htmlFor="text">
+              Username :
+              <input
+                type="text"
+                placeholder="Username"
+                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+              />
             </label>
-            <label htmlFor="password"> Password :
-            <input type="password" placeholder="Password" className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"/>
+            <label htmlFor="password">
+              {" "}
+              Password :
+              <input
+                type="password"
+                placeholder="Password"
+                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+              />
             </label>
           </form>
           <button className="bg-[#F01D19] text-white px-28 py-4 rounded-xl">
             Sign in
           </button>
-          <p className="mt-5 hover:underline hover:underline-offset-4 cursor-pointer ">Forgot your password?</p>
+          <p className="mt-5 hover:underline hover:underline-offset-4 cursor-pointer ">
+            Forgot your password?
+          </p>
         </div>
         <div className="flex justify-between  absolute bottom-6  right-0 px-5 w-full lg:justify-around">
           <p className=" flex flex-col leading-4">
-            Need an account? <span className="font-semibold hover:underline hover:underline-offset-4">create account</span> 
+            Need an account?{" "}
+            <span
+              className="font-semibold hover:underline hover:underline-offset-4 cursor-pointer"
+              onClick={() => dispatch(checkLogged())}
+            >
+              create account
+            </span>
           </p>
           <p className="text-center">or</p>
-          <p>Continue as <span className="font-semibold hover:underline hover:underline-offset-4 ">guest</span></p>
+          <p>
+            Continue as{" "}
+            <span className="font-semibold hover:underline hover:underline-offset-4 cursor-pointer">
+              <Link href="/home">guest</Link>
+            </span>
+          </p>
         </div>
       </section>
     </>
   );
 }
-
-
 
 function CreateLogin() {
   const theme = useSelector((state) => state.theme.darkMode);
@@ -110,35 +134,56 @@ function CreateLogin() {
             <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
           </svg>
         </label>
-        <div className="flex flex-col justify-between" >
-          <h1 className="text-2xl lg:text-4xl font-semibold text-center">Welcome back to Readit</h1>
-          <p className="text-center mt-2 lg:mt-5 ">Sign in to explore, buy and manage books</p>
-          <form className="flex flex-col gap-4 my-5">
-            <label htmlFor="text">Username :
-            <input type="text" placeholder="Username" className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"/>
+        <div className="flex flex-col justify-between">
+          <h1 className="text-2xl lg:text-4xl font-semibold text-center">
+            Welcome back to Readit
+          </h1>
+          <p className="text-center mt-2 lg:mt-5 ">
+            Sign in to explore, buy and manage books
+          </p>
+          <form className="flex flex-col gap-2 my-5">
+            <label htmlFor="text">
+              Username :
+              <input
+                type="text"
+                placeholder="Username"
+                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+              />
             </label>
-            <label htmlFor="password"> Password :
-            <input type="password" placeholder="Password" className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"/>
+            <label htmlFor="password">
+              {" "}
+              Password :
+              <input
+                type="password"
+                placeholder="Password"
+                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+              />
             </label>
-            <label htmlFor="password">Repeat Password :
-            <input type="password" placeholder="Repeat Password" className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"/>
+            <label htmlFor="password">
+              Repeat Password :
+              <input
+                type="password"
+                placeholder="Repeat Password"
+                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+              />
             </label>
           </form>
           <button className="bg-[#F01D19] text-white px-28 py-4 rounded-xl">
             Sign in
           </button>
-          <p className="mt-5 hover:underline hover:underline-offset-4 cursor-pointer ">Forgot your password?</p>
+          <p className="mt-5 hover:underline hover:underline-offset-4 cursor-pointer ">
+            Forgot your password?
+          </p>
         </div>
         <div className="flex justify-between  absolute bottom-6  right-0 px-5 w-full lg:justify-around">
-          <p className=" flex flex-col leading-4">
-            Need an account? <span className="font-semibold hover:underline hover:underline-offset-4">create account</span> 
+          <p>
+            Continue as{" "}
+            <span className="font-semibold hover:underline hover:underline-offset-4 cursor-pointer">
+              <Link href="/home">guest</Link>
+            </span>
           </p>
-          <p className="text-center">or</p>
-          <p>Continue as <span className="font-semibold hover:underline hover:underline-offset-4 ">guest</span></p>
         </div>
       </section>
     </>
   );
 }
-
-
