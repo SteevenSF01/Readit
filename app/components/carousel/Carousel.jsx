@@ -136,7 +136,7 @@ export default function Carousel() {
         <div className="w-full h-full flex justify-center items-center">
           {books.map((element, index) => (
             <div
-              key={element}
+              key={index}
               className={`${theme? 'bg-[#323232]':'bg-white'} absolute transition-opacity  duration-1000 ease-in-out  flex rounded-xl overflow-hidden  border-2 border-[#161616] p-1 ${
                 index === currentSlide ? "opacity-100" : "opacity-0"
               }`}

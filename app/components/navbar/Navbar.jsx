@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon, Bars3Icon, BookOpenIcon } from "@heroicons/react/24/outline";
 import { useSelector, useDispatch } from "react-redux";
 import { toggledTheme } from "@/app/lib/features/theme/theme";
@@ -98,17 +98,17 @@ export default function Navbar() {
           className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-4 py-2 rounded-lg cursor-pointer"
           onClick={toggleMenu}
         >
-          <ShoppingCartIcon className="h-6 w-6" />
+          <HeartIcon className="h-6 w-6" />
         </button>
       </div>
 
       <div
         className={`h-screen transition-all duration-500 z-50 bg-white absolute top-0 right-0 overflow-hidden p-0  ${
-          toggle ? "w-0" : "w-[350px] h-screen px-6 border-s-2 border-black"
+          toggle ? "w-0" : "w-[320px] h-screen px-6 border-s-2 border-black"
         }`}
       >
         <XMarkIcon
-          className="absolute top-3 right-3 w-6 h-6 cursor-pointer"
+          className={`absolute top-3 right-3 w-6 h-6 cursor-pointer text-[#161616]`}
           onClick={toggleMenu}
         />
         <div className="my-10"></div>

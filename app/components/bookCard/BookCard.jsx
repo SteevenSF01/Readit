@@ -33,7 +33,9 @@ export default function BookCard() {
           {data &&
             data.map((book, i) => {
               return (
-                <div className="bg-black rounded-xl overflow-hidden w-[45%] ">
+                <div className={`${
+                  !theme ? "bg-white text-[#323232] " : " bg-black text-white "
+                } rounded-xl overflow-hidden w-[45%] `} key={i}>
                   <div className=" ">
                     <Image
                       src={book.image_url}
@@ -43,18 +45,15 @@ export default function BookCard() {
                       className="h-[150px]"
                     />
                   </div>
-                  <div className="py-3 px-4">
-                    <h1 className="text-center">{book.title}</h1>
+                  <div className="py-3 relative flex flex-col items-center h-[150px]">
+                    <h1 className="text-center line-clamp-1">{book.title}</h1>
                     <ul>
-                      <li className="line-clamp-2">
-                        <strong>Description: </strong>
-                        {book.description}
-                      </li>
                       <li>
                         <strong>Rating: </strong>
                         {book.rating}
                       </li>
                     </ul>
+                    <button className="bg-[#E00404] text-white absolute bottom-5 right-5 px-4 py-1 rounded-xl">More details</button>
                   </div>
                 </div>
               );
