@@ -76,7 +76,7 @@ export default function Navbar() {
             <Bars3Icon className="w-6 h-6" />
           </div>
           {!burgerMenu ? (
-            <ul className={`${theme? 'bg-white text-[#161616]': 'bg-gray-200 text-black'} rounded-lg py-2 px-4 top-12 -left-3 absolute flex flex-col`}>
+            <ul className={`${theme? 'bg-white text-[#161616]': 'bg-gray-200 text-black'} rounded-lg py-2 px-4 top-12 -left-3 absolute flex flex-col z-40`}>
               {links.map((link) => {
                 return (
                   <Link
@@ -103,7 +103,7 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`h-screen transition-all duration-500 bg-white absolute top-0 right-0 overflow-hidden p-0  ${
+        className={`h-screen transition-all duration-500 z-50 bg-white absolute top-0 right-0 overflow-hidden p-0  ${
           toggle ? "w-0" : "w-[350px] h-screen px-6 border-s-2 border-black"
         }`}
       >
