@@ -169,7 +169,7 @@ function CreateLogin() {
             </label>
           </form>
           <button className="bg-[#F01D19] text-white px-28 py-4 rounded-xl">
-            Sign in
+            Create
           </button>
           <p className="mt-5 hover:underline hover:underline-offset-4 cursor-pointer ">
             Forgot your password?
