@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .scrollBar-thumb {
     scrollbar-color: rgb(35, 34, 34);
 }

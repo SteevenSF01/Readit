@@ -31,7 +31,6 @@ export default function FiltreCategories() {
     uniqueGenres = Array.from(new Set(uniqueGenres));
   }
 
-  console.log(uniqueGenres);
   return (
     <>
       <section className="flex justify-center">
