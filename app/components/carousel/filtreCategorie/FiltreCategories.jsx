@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBookData } from "@/app/lib/features/data/data";
+import './Filtre.css'
 
 export default function FiltreCategories() {
   const theme = useSelector((state) => state.theme.darkMode);
@@ -33,8 +34,8 @@ export default function FiltreCategories() {
   console.log(uniqueGenres);
   return (
     <>
-      <section className="overflow-scroll flex justify-center">
-        <div className="h-[200px] flex flex-wrap justify-center gap-5  overflow-scroll w-[70%] pb-10 `">
+      <section className="flex justify-center">
+        <div className="scrollBar-thumb h-[200px] flex flex-wrap justify-center gap-5  overflow-y-scroll w-[70%] pb-10`">
           {uniqueGenres &&
             uniqueGenres.map((genre, i) => {
               return (
@@ -42,8 +43,8 @@ export default function FiltreCategories() {
                   className={`${
                     theme
                       ? "bg-[#323232] text-white"
-                      : "bg-white text-[#323232]"
-                  } px-5 py-2 rounded-xl w-[100%] h-[35%] `}
+                      : "bg-white text-[#323232] border-2 border-[#323232] shadow-[0_3px_10px_rgb(0,0,0,0.5)] "
+                  } px-5 py-2 rounded-xl w-full md:w-[80%] h-[35%] `}
                   key={i}
                 >
                   {genre}
