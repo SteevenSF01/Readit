@@ -18,7 +18,7 @@ function SigninLogin() {
       <section
         className={`${
           !theme ? "bg-white text-[#161616] " : "bg-[#161616] text-white"
-        } flex flex-col px-10 h-full justify-center items-center relative ${
+        } flex flex-col px-10 h-screen justify-center items-center relative ${
           merriweather.className
         }`}
       >
@@ -61,7 +61,6 @@ function SigninLogin() {
               />
             </label>
             <label htmlFor="password">
-              {" "}
               Password :
               <input
                 type="password"
@@ -108,7 +107,7 @@ function CreateLogin() {
       <section
         className={`${
           !theme ? "bg-white text-[#161616] " : "bg-[#161616] text-white"
-        } flex flex-col px-10 h-full justify-center items-center relative ${
+        } flex flex-col px-10 h-screen justify-center items-center relative ${
           merriweather.className
         }`}
       >

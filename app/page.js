@@ -13,7 +13,7 @@ export default function Home() {
     <main
       className={`${
         !theme ? "bg-white text-[#161616] " : "bg-[#161616] text-white"
-      } flex flex-col h-full justify-around items-center relative ${
+      } flex flex-col h-screen justify-around items-center relative ${
         merriweather.className
       }`}
     >
