@@ -10,7 +10,9 @@ export default function FavorisHome() {
 
   return (
     <>
-      <section className={`${arrayFavoris.length == 0 ?'h-[100px]' : 'min-h-[250px]'} w-full bg-[#323232] flex overflow-scroll items-center gap-x-5`}>
+      <section className={`${arrayFavoris.length == 0 ?'h-[100px]' : 'min-h-[250px]'} ${
+                !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
+              } w-full flex overflow-y-scroll items-center gap-x-5 px-5`}>
         {arrayFavoris.length === 0 && (<p className="text-center w-full">Any book in favorites yet </p>)}
         {arrayFavoris.map((book, i) => {
           const estFavoris = arrayFavoris.some((item) => item.id === book.id);
@@ -18,10 +20,10 @@ export default function FavorisHome() {
             <div
               className={`${
                 !theme ? "bg-white text-[#323232] " : " bg-black text-white "
-              } rounded-xl h-[200px] w-[350px] `}
+              } rounded-xl  h-[200px] w-fit flex `}
               key={i}
             >
-              <div className=" relative">
+              <div className=" relative w-[170px] h-full p-1">
                 {estFavoris ? (
                   <CoeurPlein
                     className="w-10 h-10 absolute top-2 left-2 text-[#E00404]"
@@ -33,16 +35,16 @@ export default function FavorisHome() {
                     onClick={() => dispatch(toggleFavori(book))}
                   />
                 )}
-                {/* <Image
+                <img
                   src={book.image_url}
-                  width={320}
-                  height={480}
+                  width={420}
+                  height={380}
                   alt={`The cover of ${book.title}`}
-                  className="h-[150px]"
-                /> */}
+                  className="rounded-lg h-full"
+                />
               </div>
-              <div className="py-3 relative flex flex-col items-center h-[150px] w-[300px]">
-                <h1 className="text-center line-clamp-1">{book.title}</h1>
+              <div className="py-4 px-2 relative flex flex-col items-center h-full w-[180px] ">
+                <h1 className="text-center ">{book.title}</h1>
                 <ul>
                   <li>
                     <strong>Rating: </strong>

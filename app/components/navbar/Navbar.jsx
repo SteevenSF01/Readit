@@ -22,8 +22,8 @@ export default function Navbar() {
   };
 
   const links = [
-    { name: "home", href: "/" },
-    { name: "about", href: "/about" },
+    { name: "home", href: "/home" },
+    { name: "genre", href: "/genre" },
     { name: "contact", href: "/contact" },
   ];
 
