@@ -1,22 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = {
+  arrayFavoris: []
+};
 
-const favorisSlice = createSlice({
+const FavorisSlice = createSlice({
   name: 'favoris',
   initialState,
   reducers: {
     toggleFavori: (state, action) => {
-      const { id } = action.payload;
-      if (state[id] === undefined) {
-        state[id] = true; // Agregar a favoritos si no está en la lista
+      const id = state.arrayFavoris.findIndex(book => book.id === action.payload.id);
+      if (id !== -1) {
+        state.arrayFavoris = state.arrayFavoris.filter(book => book.id !== action.payload.id);
       } else {
-        delete state[id]; // Eliminar de favoritos si ya está en la lista
+        state.arrayFavoris.push(action.payload); 
       }
-    },
+    },   
   },
 });
 
-export const { toggleFavori } = favorisSlice.actions;
-
-export default favorisSlice.reducer;
+export const { toggleFavori } = FavorisSlice.actions;
+export default  FavorisSlice.reducer;

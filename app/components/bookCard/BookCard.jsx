@@ -3,15 +3,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchBookData } from "@/app/lib/features/data/data";
 import { HeartIcon as CoeurVide } from "@heroicons/react/24/outline";
 import { HeartIcon as CoeurPlein } from "@heroicons/react/24/solid";
-import { toggleFavori } from "@/app/lib/features/favoris/FavorisSlice";
+import { toggleFavori } from "@/app/lib/features/favoris/favorisSlice";
 import Image from "next/image";
 import "./bookcard.css";
 
 export default function BookCard() {
   const theme = useSelector((state) => state.theme.darkMode);
-  const favoris = useSelector((state) => state.favoris);
+  const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.book);
+
+  console.log(arrayFavoris);
 
   useEffect(() => {
     dispatch(fetchBookData());
@@ -36,6 +38,7 @@ export default function BookCard() {
         <div className="flex flex-wrap justify-center gap-5 h-[500px] overflow-y-scroll scrollBar-thumb">
           {data &&
             data.map((book, i) => {
+              const estFavoris = arrayFavoris.some(item => item.id === book.id);
               return (
                 <div
                   className={`${
@@ -46,15 +49,15 @@ export default function BookCard() {
                   key={i}
                 >
                   <div className=" relative">
-                    {!favoris[book.id] ? (
-                      <CoeurVide
-                        className="w-10 h-10 absolute top-2  left-2  text-[#E00404] "
-                        onClick={() => dispatch(toggleFavori({ id: book.id }))}
-                      />
-                    ) : (
+                    {estFavoris ? (
                       <CoeurPlein
                         className="w-10 h-10 absolute top-2 left-2 text-[#E00404]"
-                        onClick={() => dispatch(toggleFavori({ id: book.id }))}
+                        onClick={() => dispatch(toggleFavori(book))}
+                      />
+                    ) : (
+                      <CoeurVide
+                        className="w-10 h-10 absolute top-2  left-2  text-[#E00404] "
+                        onClick={() => dispatch(toggleFavori(book))}
                       />
                     )}
                     <Image
