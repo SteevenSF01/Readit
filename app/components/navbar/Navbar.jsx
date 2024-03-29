@@ -111,7 +111,6 @@ export default function Navbar() {
           <HeartIcon className="h-6 w-6" />
         </button>
       </div>
-
       <div
         className={`h-screen transition-all duration-500 z-50 absolute top-0 right-0 overflow-hidden p-0  ${
           toggle ? "w-0" : "w-[320px] h-screen px-6 border-s-2 border-black"
