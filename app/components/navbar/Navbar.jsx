@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import { HeartIcon } from "@heroicons/react/24/outline";
-import { XMarkIcon, Bars3Icon, BookOpenIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  Bars3Icon,
+  BookOpenIcon,
+} from "@heroicons/react/24/outline";
 import { useSelector, useDispatch } from "react-redux";
 import { toggledTheme } from "@/app/lib/features/theme/theme";
 import Link from "next/link";
@@ -30,7 +34,9 @@ export default function Navbar() {
       } py-3 px-5 flex justify-end relative items-center`}
     >
       <div className="flex gap-x-4 w-full ">
-        <h1 className="flex items-center me-auto"><BookOpenIcon className="w-6 h-6" /> Readit</h1>
+        <h1 className="flex items-center me-auto">
+          <BookOpenIcon className="w-6 h-6" /> Readit
+        </h1>
 
         <label className="swap swap-rotate">
           <input
@@ -70,17 +76,21 @@ export default function Navbar() {
         </ul>
         <div className={`relative block md:hidden `}>
           <div
-            className="flex items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] py-2 px-4 rounded-lg"
+            className={`flex items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] py-2 px-4 rounded-lg`}
             onClick={() => setBurgerMenu(!burgerMenu)}
           >
             <Bars3Icon className="w-6 h-6" />
           </div>
           {!burgerMenu ? (
-            <ul className={`${theme? 'bg-white text-[#161616]': 'bg-gray-200 text-black'} rounded-lg py-2 px-4 top-12 -left-3 absolute flex flex-col z-40`}>
+            <ul
+              className={`${
+                theme ? "bg-white text-[#161616]" : "bg-gray-200 text-black"
+              } rounded-lg py-2 px-4 top-12 -left-3 absolute flex flex-col z-40`}
+            >
               {links.map((link) => {
                 return (
                   <Link
-                  onClick={() => setBurgerMenu(!burgerMenu)}
+                    onClick={() => setBurgerMenu(!burgerMenu)}
                     className="my-1 hover:underline cursor-pointer"
                     key={link.name}
                     href={link.href}
@@ -103,16 +113,16 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`h-screen transition-all duration-500 z-50 bg-white absolute top-0 right-0 overflow-hidden p-0  ${
+        className={`h-screen transition-all duration-500 z-50 absolute top-0 right-0 overflow-hidden p-0  ${
           toggle ? "w-0" : "w-[320px] h-screen px-6 border-s-2 border-black"
-        }`}
+        } ${theme ? "bg-[#323232] text-white" : "bg-white text-[#161616]"}`}
       >
         <XMarkIcon
           className={`absolute top-3 right-3 w-6 h-6 cursor-pointer text-[#161616]`}
           onClick={toggleMenu}
         />
-        <div className="my-10"></div>
-        <p></p>
+        <div className="my-10 "></div>
+        <p className=""></p>
       </div>
     </nav>
   );
