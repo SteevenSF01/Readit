@@ -1,7 +1,6 @@
 "use client";
 
 //Components
-import Navbar from "../components/navbar/Navbar";
 import Carousel from "../components/carousel/Carousel";
 import FiltreCategories from "../components/carousel/filtreCategorie/FiltreCategories";
 import FavorisHome from "../components/myFavorites/MyFavorites";
@@ -22,8 +21,7 @@ export default function HomePage() {
           theme ? "bg-[#161616] text-white" : "bg-white text-[#161616]"
         } h-full ${merriweather.className}`}
       >
-        <Navbar />
-        <div className="w-full flex justify-center items-center gap-x-2 mt-2 relative">
+        <div className="w-full flex justify-center items-center gap-x-2 pt-5 relative">
           <input
             type="text"
             placeholder="Search a book..."
@@ -32,7 +30,7 @@ export default function HomePage() {
             } w-80 py-2 px-5 rounded-xl`}
           />
           <MagnifyingGlassIcon
-            className={`w-6 h-6 absolute top-2 right-14 ${
+            className={`w-6 h-6 absolute top-17 right-14 ${
               theme ? "text-white" : "text-[#161616]"
             }`}
           />
@@ -44,9 +42,9 @@ export default function HomePage() {
         <div>
           <FavorisHome />
         </div>
-          <h1 className="px-4 my-5">Genders</h1>
-        <div className="mb-10">
-            <FiltreCategories />
+        <h1 className="px-4 my-5">Genders</h1>
+        <div className="mb-5">
+          <FiltreCategories />
         </div>
         <div className=" pt-5 ">
           <BookCard />

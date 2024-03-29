@@ -2,18 +2,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { HeartIcon as CoeurVide } from "@heroicons/react/24/outline";
 import { HeartIcon as CoeurPlein } from "@heroicons/react/24/solid";
 import { toggleFavori } from "@/app/lib/features/favoris/favorisSlice";
+import { roboto } from "@/app/fonts";
 
 export default function FavorisHome() {
   const theme = useSelector((state) => state.theme.darkMode);
   const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <>
-      <section className={`${arrayFavoris.length == 0 ?'h-[100px]' : 'min-h-[250px]'} ${
-                !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
-              } w-full flex overflow-y-scroll items-center gap-x-5 px-5`}>
-        {arrayFavoris.length === 0 && (<p className="text-center w-full">Any book in favorites yet </p>)}
+      <section
+        className={`${
+          arrayFavoris.length == 0 ? "h-[100px]" : "min-h-[250px]"
+        } ${
+          !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
+        } w-full flex overflow-y-scroll items-center gap-x-5 px-5 rounded-xl `}
+      >
+        {arrayFavoris.length === 0 && (
+          <p className="text-center w-full">No favorites yet </p>
+        )}
         {arrayFavoris.map((book, i) => {
           const estFavoris = arrayFavoris.some((item) => item.id === book.id);
           return (
@@ -44,11 +51,13 @@ export default function FavorisHome() {
                 />
               </div>
               <div className="py-4 px-2 relative flex flex-col items-center h-full w-[180px] ">
-                <h1 className="text-center ">{book.title}</h1>
+                <h1 className={`text-center ${roboto.className}`}>{book.title}</h1>
                 <ul>
-                  <li>
-                    <strong>Rating: </strong>
-                    {book.rating}
+                  <li className="flex">
+                    <strong>Rating :</strong>
+                    <p className={`${roboto.className}`}>
+                   &nbsp; {book.rating}
+                    </p>
                   </li>
                 </ul>
                 <button className="bg-[#E00404] text-white absolute bottom-5 right-5 px-4 py-1 rounded-xl">

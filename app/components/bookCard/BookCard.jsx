@@ -4,6 +4,7 @@ import { fetchBookData } from "@/app/lib/features/data/data";
 import { HeartIcon as CoeurVide } from "@heroicons/react/24/outline";
 import { HeartIcon as CoeurPlein } from "@heroicons/react/24/solid";
 import { toggleFavori } from "@/app/lib/features/favoris/favorisSlice";
+import { roboto } from "@/app/fonts";
 import Image from "next/image";
 import "./bookcard.css";
 
@@ -28,12 +29,12 @@ export default function BookCard() {
       <section
         className={`${
           !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
-        }`}
+        } rounded-xl pb-5`}
       >
         <h1 className="ps-5 pt-5 my-5">
           <strong>All books</strong>
         </h1>
-        <div className="flex flex-wrap justify-center gap-5 h-[500px] overflow-y-scroll scrollBar-thumb">
+        <div className="flex flex-wrap justify-center gap-5 h-[500px] overflow-y-scroll scrollBar-thumb ">
           {data &&
             data.map((book, i) => {
               const estFavoris = arrayFavoris.some(item => item.id === book.id);
@@ -66,15 +67,15 @@ export default function BookCard() {
                       className="h-[150px]"
                     />
                   </div>
-                  <div className="py-3 relative flex flex-col items-center h-[150px]">
-                    <h1 className="text-center line-clamp-1">{book.title}</h1>
+                  <div className="py-3 px-2 relative flex flex-col items-center h-[150px]">
+                    <h1 className={`text-center line-clamp-2 mb-1 ${roboto.className}`}>{book.title}</h1>
                     <ul>
-                      <li>
-                        <strong>Rating: </strong>
-                        {book.rating}
+                      <li className="flex">
+                        <strong>Rating :</strong>
+                        <p className={`${roboto.className}`}>&nbsp;{book.rating}</p>
                       </li>
                     </ul>
-                    <button className="bg-[#E00404] text-white absolute bottom-5 right-5 px-4 py-1 rounded-xl">
+                    <button className={`bg-[#E00404] text-white absolute bottom-5 right-6 px-4 py-1 rounded-xl ${roboto.className}`}>
                       More details
                     </button>
                   </div>

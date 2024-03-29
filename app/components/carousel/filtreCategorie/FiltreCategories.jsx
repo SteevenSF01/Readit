@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { roboto } from "@/app/fonts";
 //css pour la scrollbar
 import "./Filtre.css";
 //Data de l'api
@@ -64,7 +65,7 @@ export default function FiltreCategories() {
                     theme
                       ? "bg-[#323232] text-white"
                       : "bg-white text-[#323232] border-2 border-[#323232] shadow-[0_3px_10px_rgb(0,0,0,0.5)] "
-                  } px-5 py-2 rounded-xl text-[13px] w-[40%] md:w-[80%] h-[35%] `}
+                  } px-5 py-2 rounded-xl text-[15px] w-[40%] md:w-[80%] h-[35%] ${roboto.className} `}
                   key={i}
                 >
                   {genre}

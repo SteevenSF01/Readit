@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { roboto } from "@/app/fonts";
 
 const books = [
   {
@@ -149,15 +150,15 @@ export default function Carousel() {
                   className="rounded-lg w-full h-full overflow-hidden object-fill"
                 />
               </div>
-              <div className="w-[50%] p-3">
+              <div className="w-[50%] p-3 gap-y-2 flex flex-col">
                 <p className="mb-2 text-[18px]">
-                  Title: <span className="text-[14px]">{element.title} </span>
+                  Title: <span className={`${roboto.className} text-[14px]`}>{element.title} </span>
                 </p>
                 <p className="text-[18px]">
-                  Authors: <span className="text-[14px]">{element.authors}</span>
+                  Authors: <span className={`${roboto.className} text-[14px]`}>{element.authors}</span>
                 </p>
                 <p className="text-[18px]">
-                  Description: <span className="text-[14px] line-clamp-2">{element.description}</span>
+                  Description: <span className={`${roboto.className} text-[14px] line-clamp-2`}>{element.description}</span>
                 </p>
               </div>
             </div>
