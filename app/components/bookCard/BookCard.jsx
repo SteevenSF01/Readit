@@ -13,8 +13,6 @@ export default function BookCard() {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.book);
 
-  console.log(arrayFavoris);
-
   useEffect(() => {
     dispatch(fetchBookData());
   }, [dispatch]);

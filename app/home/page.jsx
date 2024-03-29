@@ -4,7 +4,7 @@
 import Navbar from "../components/navbar/Navbar";
 import Carousel from "../components/carousel/Carousel";
 import FiltreCategories from "../components/carousel/filtreCategorie/FiltreCategories";
-import FavorisHome from "../components/favorisHome/FavorisHome";
+import FavorisHome from "../components/myFavorites/MyFavorites";
 import BookCard from "../components/bookCard/BookCard";
 import Footer from "../components/footer/Footer";
 
