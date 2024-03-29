@@ -5,6 +5,7 @@ import { HeartIcon as CoeurVide } from "@heroicons/react/24/outline";
 import { HeartIcon as CoeurPlein } from "@heroicons/react/24/solid";
 import { toggleFavori } from "@/app/lib/features/favoris/favorisSlice";
 import { roboto } from "@/app/fonts";
+import Link from "next/link";
 import Image from "next/image";
 import "./bookcard.css";
 
@@ -75,9 +76,11 @@ export default function BookCard() {
                         <p className={`${roboto.className}`}>&nbsp;{book.rating}</p>
                       </li>
                     </ul>
+                    <Link href={`/home/details/${book.id  -1}`}>
                     <button className={`bg-[#E00404] text-white absolute bottom-5 right-6 px-4 py-1 rounded-xl ${roboto.className}`}>
                       More details
                     </button>
+                    </Link>
                   </div>
                 </div>
               );
