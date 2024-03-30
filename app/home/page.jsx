@@ -2,7 +2,7 @@
 
 //Components
 import Carousel from "../components/carousel/Carousel";
-import FiltreCategories from "../components/carousel/filtreCategorie/FiltreCategories";
+import FiltreCategories from "../components/filtreCategorie/FiltreCategories";
 import FavorisHome from "../components/myFavorites/MyFavorites";
 import BookCard from "../components/bookCard/BookCard";
 import Footer from "../components/footer/Footer";

@@ -51,12 +51,12 @@ export default function FavorisHome() {
                 />
               </div>
               <div className="py-4 px-2 relative flex flex-col items-center h-full w-[180px] ">
-                <h1 className={`text-center ${roboto.className}`}>{book.title}</h1>
+                <h1 className={`text-center mb-2 ${roboto.className}`}>{book.title}</h1>
                 <ul>
                   <li className="flex">
                     <strong>Rating :</strong>
                     <p className={`${roboto.className}`}>
-                   &nbsp; {book.rating}
+                    &nbsp; {book.rating}
                     </p>
                   </li>
                 </ul>
