@@ -6,6 +6,7 @@ import FiltreCategories from "../components/filtreCategorie/FiltreCategories";
 import FavorisHome from "../components/myFavorites/MyFavorites";
 import BookCard from "../components/bookCard/BookCard";
 import Footer from "../components/footer/Footer";
+import Newsletter from "../components/newsletter/Newsletter";
 
 //imports
 import { useSelector } from "react-redux";
@@ -48,6 +49,9 @@ export default function HomePage() {
         </div>
         <div className=" pt-5 ">
           <BookCard />
+        </div>
+        <div>
+          <Newsletter />
         </div>
         <Footer />
       </section>
