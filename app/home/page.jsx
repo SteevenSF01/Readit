@@ -9,12 +9,23 @@ import Footer from "../components/footer/Footer";
 import Newsletter from "../components/newsletter/Newsletter";
 
 //imports
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { merriweather } from "../fonts";
+import { useState } from "react";
+import { searchBook } from "../lib/features/filter/filterSlice";
+
 
 export default function HomePage() {
+  const [inputValue, setInputValue] = useState('')
   const theme = useSelector((state) => state.theme.darkMode);
+  const searchByInput = useSelector((state) => state.filter.searchBook)
+  const dispatch = useDispatch()
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+    dispatch(searchBook(e.target.value))
+  }
   return (
     <>
       <section
@@ -26,6 +37,8 @@ export default function HomePage() {
           <input
             type="text"
             placeholder="Search a book..."
+            value={inputValue}
+            onChange={handleInputChange}
             className={`${
               theme ? "bg-[#323232]" : "bg-white border-2 border-[#161616]"
             } w-80 py-2 px-5 rounded-xl`}
@@ -48,7 +61,7 @@ export default function HomePage() {
           <FiltreCategories />
         </div>
         <div className=" pt-5 ">
-          <BookCard />
+          <BookCard searchByInput={searchByInput} />
         </div>
         <div>
           <Newsletter />
