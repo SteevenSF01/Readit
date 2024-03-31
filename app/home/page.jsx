@@ -26,10 +26,10 @@ export default function HomePage() {
     dispatch(searchBook(e.target.value));
   };
 
-  const [filters, setFilters] = useState([]);
+  const [filter, setFilter] = useState("");
 
-  const handleFilterChange = (selectedFilters) => {
-    setFilters(selectedFilters);
+  const handleFilterChange = (selectedFilter) => {
+    setFilter(selectedFilter);
   };
 
   return (
@@ -67,7 +67,7 @@ export default function HomePage() {
           <FiltreCategories onFilterChange={handleFilterChange} />
         </div>
         <div className=" pt-5 ">
-          <BookCard searchByInput={searchByInput} filters={filters} />
+          <BookCard searchByInput={searchByInput} filters={filter} />
         </div>
         <div>
           <Newsletter />

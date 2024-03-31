@@ -47,17 +47,29 @@ const DetailsPage = ({ params }) => {
               <h1 className={`text-5xl text-center font-medium mt-5`}>
                 {data[params.detailsID].title}
               </h1>
-              <p className={`text-xl font-semibold mt-5 ${merriweather.className}`}>
+              <p
+                className={`text-xl font-semibold mt-5 ${merriweather.className}`}
+              >
                 Author : &nbsp;
-                <span className={`font-normal ${roboto.className}`}>{data[params.detailsID].authors}</span>
+                <span className={`font-normal ${roboto.className}`}>
+                  {data[params.detailsID].authors}
+                </span>
               </p>
-              <p className={`text-xl mt-5 font-semibold ${merriweather.className}`}>
+              <p
+                className={`text-xl mt-5 font-semibold ${merriweather.className}`}
+              >
                 Genre :&nbsp;
-                <span className={`font-normal ${roboto.className}`}>{bookGenre(data[params.detailsID].genre_list)}</span>
+                <span className={`font-normal ${roboto.className}`}>
+                  {bookGenre(data[params.detailsID].genre_list)}
+                </span>
               </p>
-              <p className={`text-xl mt-5 font-semibold ${merriweather.className}`}>
+              <p
+                className={`text-xl mt-5 font-semibold ${merriweather.className}`}
+              >
                 Description :&nbsp;
-                <span className={`font-normal ${roboto.className}`}>{data[params.detailsID].description}</span>
+                <span className={`font-normal ${roboto.className}`}>
+                  {data[params.detailsID].description}
+                </span>
               </p>
             </div>
           </div>

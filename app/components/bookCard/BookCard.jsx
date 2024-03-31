@@ -15,19 +15,21 @@ export default function BookCard({ searchByInput, filters }) {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.book);
 
-  const filterBooks = (books, searchInput, selectedFilters) => {
+  const filterBooks = (books, searchInput, selectedFilter) => {
     return books.filter((book) => {
-      const titleMatch = book.title.toLowerCase().includes(searchInput.toLowerCase());
-      const genreMatch = selectedFilters.length === 0 || 
-        selectedFilters.every((filter) => book.genre_list.includes(filter));
+      const titleMatch = book.title
+        .toLowerCase()
+        .includes(searchInput.toLowerCase());
+      const genreMatch =
+        !selectedFilter || book.genre_list.includes(selectedFilter);
       return titleMatch && genreMatch;
     });
   };
   let filteredBooks = [];
-if (data) {
-  filteredBooks = filterBooks(data, searchByInput, filters);
-}
-
+  if (data) {
+    filteredBooks = filterBooks(data, searchByInput, filters);
+    console.log(filters);
+  }
 
   useEffect(() => {
     dispatch(fetchBookData());
