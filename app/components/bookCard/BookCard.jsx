@@ -21,7 +21,9 @@ export default function BookCard({ searchByInput, filters }) {
         .toLowerCase()
         .includes(searchInput.toLowerCase());
       const genreMatch =
-        !selectedFilter || book.genre_list.includes(selectedFilter);
+        !selectedFilter ||
+        selectedFilter === "All" ||
+        book.genre_list.includes(selectedFilter);
       return titleMatch && genreMatch;
     });
   };

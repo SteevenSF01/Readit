@@ -10,11 +10,11 @@ import { fetchBookData } from "@/app/lib/features/data/data";
 export default function FiltreCategories({ onFilterChange }) {
   const theme = useSelector((state) => state.theme.darkMode);
 
-  const [selectedFilter, setSelectedFilter] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("All");
 
   const handleFilterClick = (filter) => {
     setSelectedFilter(filter);
-    onFilterChange(filter);
+    onFilterChange(filter === "All" ? "" : filter);
   };
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.book);
@@ -61,6 +61,8 @@ export default function FiltreCategories({ onFilterChange }) {
     //si  a et b sont identiques, il gardera sa position
     return 0;
   });
+
+  uniqueGenres.unshift("All");
 
   return (
     <>
