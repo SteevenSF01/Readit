@@ -4,6 +4,8 @@ import { fetchBookData } from "@/app/lib/features/data/data";
 import { HeartIcon as CoeurVide } from "@heroicons/react/24/outline";
 import { HeartIcon as CoeurPlein } from "@heroicons/react/24/solid";
 import { toggleFavori } from "@/app/lib/features/favoris/favorisSlice";
+import LoginModal from "../loginModal/LoginModal";
+import { useState } from "react";
 import { roboto } from "@/app/fonts";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,9 +13,12 @@ import "./bookcard.css";
 
 export default function BookCard({ searchByInput, filters }) {
   const theme = useSelector((state) => state.theme.darkMode);
-  const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
   const dispatch = useDispatch();
+  const logged = useSelector((state) => state.login.logged);
+  const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
   const { data, loading, error } = useSelector((state) => state.book);
+
+  const [testComponents, setTestComponents] = useState(false);
 
   const filterBooks = (books, searchInput, selectedFilter) => {
     return books.filter((book) => {
@@ -27,10 +32,10 @@ export default function BookCard({ searchByInput, filters }) {
       return titleMatch && genreMatch;
     });
   };
+  // On récupère les livres correspondant à la recherche ou filtre
   let filteredBooks = [];
   if (data) {
     filteredBooks = filterBooks(data, searchByInput, filters);
-    console.log(filters);
   }
 
   useEffect(() => {
@@ -53,7 +58,14 @@ export default function BookCard({ searchByInput, filters }) {
         <h1 className="ps-5 pt-5 my-5">
           <strong>All books</strong>
         </h1>
-        <div className="flex flex-wrap justify-center gap-5 h-[500px] overflow-y-scroll scrollBar-thumb ">
+        <div className="flex flex-wrap justify-center gap-5 h-[500px] overflow-y-scroll scrollBar-thumb relative ">
+          {testComponents && !logged && (
+            <div
+              className={`w-full h-screen bg-black fixed top-0 right-0 bg-opacity-55 backdrop-blur-md flex justify-center items-center z-40`}
+            >
+              <LoginModal setTestComponents={setTestComponents} />
+            </div>
+          )}
           {data &&
             filteredBooks.map((book, i) => {
               const estFavoris = arrayFavoris.some(
@@ -77,7 +89,11 @@ export default function BookCard({ searchByInput, filters }) {
                     ) : (
                       <CoeurVide
                         className="w-10 h-10 absolute top-2  left-2  text-[#E00404] "
-                        onClick={() => dispatch(toggleFavori(book))}
+                        onClick={() =>
+                          logged
+                            ? dispatch(toggleFavori(book))
+                            : setTestComponents(true)
+                        }
                       />
                     )}
                     <Image

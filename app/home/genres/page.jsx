@@ -8,7 +8,7 @@ export default function GenrePage() {
   return (
     <>
       <section className={`${theme? 'bg-[#161616] text-white':'bg-white text-[#161616]'}`}>
-        <h1 className={`px-3 pt-5 ${roboto.className}`}>Top Reader's pick</h1>
+        <h1 className={`px-3 pt-5 ${roboto.className}`}>Top Reader s pick</h1>
         <div className="py-3">
         <PickerUser />
         </div>

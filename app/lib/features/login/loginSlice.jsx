@@ -17,3 +17,5 @@ const loginSlice = createSlice({
 export const {checkLogged} = loginSlice.actions;
 
 export default loginSlice.reducer;
+
+
