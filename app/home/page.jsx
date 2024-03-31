@@ -15,17 +15,23 @@ import { merriweather } from "../fonts";
 import { useState } from "react";
 import { searchBook } from "../lib/features/filter/filterSlice";
 
-
 export default function HomePage() {
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState("");
   const theme = useSelector((state) => state.theme.darkMode);
-  const searchByInput = useSelector((state) => state.filter.searchBook)
-  const dispatch = useDispatch()
+  const searchByInput = useSelector((state) => state.filter.searchBook);
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-    dispatch(searchBook(e.target.value))
-  }
+    dispatch(searchBook(e.target.value));
+  };
+
+  const [filters, setFilters] = useState([]);
+
+  const handleFilterChange = (selectedFilters) => {
+    setFilters(selectedFilters);
+  };
+
   return (
     <>
       <section
@@ -58,10 +64,10 @@ export default function HomePage() {
         </div>
         <h1 className="px-4 my-5">Genders</h1>
         <div className="mb-5">
-          <FiltreCategories />
+          <FiltreCategories onFilterChange={handleFilterChange} />
         </div>
         <div className=" pt-5 ">
-          <BookCard searchByInput={searchByInput} />
+          <BookCard searchByInput={searchByInput} filters={filters} />
         </div>
         <div>
           <Newsletter />

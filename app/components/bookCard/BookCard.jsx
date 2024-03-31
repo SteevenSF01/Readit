@@ -9,25 +9,32 @@ import Link from "next/link";
 import Image from "next/image";
 import "./bookcard.css";
 
-export default function BookCard({ searchByInput }) {
+export default function BookCard({ searchByInput, filters }) {
   const theme = useSelector((state) => state.theme.darkMode);
   const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.book);
 
-  let filteredBooks = "";
-  if (data) {
-    filteredBooks = data.filter((book) =>
-      book.title.toLowerCase().includes(searchByInput.toLowerCase())
-    );
-  }
+  const filterBooks = (books, searchInput, selectedFilters) => {
+    return books.filter((book) => {
+      const titleMatch = book.title.toLowerCase().includes(searchInput.toLowerCase());
+      const genreMatch = selectedFilters.length === 0 || 
+        selectedFilters.every((filter) => book.genre_list.includes(filter));
+      return titleMatch && genreMatch;
+    });
+  };
+  let filteredBooks = [];
+if (data) {
+  filteredBooks = filterBooks(data, searchByInput, filters);
+}
+
 
   useEffect(() => {
     dispatch(fetchBookData());
   }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>The books are loading...</div>;
   }
   if (error) {
     return <div>Error: {error}</div>;

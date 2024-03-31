@@ -13,7 +13,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {
-  const router = useRouter()
+  const router = useRouter();
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.darkMode);
   const [toggle, setToggle] = useState(true);
@@ -25,8 +25,8 @@ export default function Navbar() {
 
   const links = [
     { name: "home", href: "/home" },
-    { name: "genres", href: "/genres" },
-    { name: "contact", href: "/contact" },
+    { name: "genres", href: "/home/genres" },
+    { name: "contact", href: "/home/contact" },
   ];
 
   return (
@@ -36,8 +36,12 @@ export default function Navbar() {
       } py-3 px-5 flex justify-end relative items-center`}
     >
       <div className="flex gap-x-4 w-full ">
-        <h1 className="flex items-center me-auto" onClick={() => router.push("/home")}>
-          <BookOpenIcon className="w-6 h-6" />&nbsp;Readit
+        <h1
+          className="flex items-center me-auto"
+          onClick={() => router.push("/home")}
+        >
+          <BookOpenIcon className="w-6 h-6" />
+          &nbsp;Readit
         </h1>
 
         <label className="swap swap-rotate">

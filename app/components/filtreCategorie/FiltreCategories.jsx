@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { roboto } from "@/app/fonts";
 //css pour la scrollbar
@@ -7,7 +7,17 @@ import "./Filtre.css";
 //Data de l'api
 import { fetchBookData } from "@/app/lib/features/data/data";
 
-export default function FiltreCategories() {
+export default function FiltreCategories({onFilterChange}) {
+
+  const [selectedFilters, setSelectedFilters] = useState([]);
+
+  const handleFilterClick = (filter) => {
+    const updatedFilters = selectedFilters.includes(filter)
+      ? selectedFilters.filter((f) => f !== filter)
+      : [...selectedFilters, filter];
+    setSelectedFilters(updatedFilters);
+    onFilterChange(updatedFilters);
+  };
   const theme = useSelector((state) => state.theme.darkMode);
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.book);
@@ -17,7 +27,7 @@ export default function FiltreCategories() {
   }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Your favorites books are loading...</div>;
   }
   if (error) {
     return <div>Error: {error}</div>;
@@ -65,11 +75,12 @@ export default function FiltreCategories() {
             uniqueGenres.map((genre, i) => {
               return (
                 <button
+                onClick={()=> handleFilterClick(genre)}
                   className={`${
                     theme
                     ? "bg-[#323232] text-white"
                     : "bg-white text-[#323232] border-2 border-[#323232] shadow-[0_3px_10px_rgb(0,0,0,0.5)] "
-                  } px-5 py-2 rounded-xl text-[15px] w-[40%] md:w-[80%] h-[35%] ${roboto.className} `}
+                  } px-5 py-2 rounded-xl text-[15px] w-[40%] md:w-[80%] h-[35%] ${roboto.className} ${selectedFilters.includes(genre)?'selected': ''}`}
                   key={i}
                   >
                   {genre}
