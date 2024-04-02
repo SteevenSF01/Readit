@@ -16,7 +16,7 @@ export default function FavorisHome() {
           arrayFavoris.length == 0 ? "h-[100px]" : "min-h-[250px]"
         } ${
           !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
-        } w-full flex overflow-y-scroll items-center gap-x-5 px-5 rounded-xl `}
+        } w-full flex overflow-x-scroll items-center gap-x-5 px-5 rounded-xl scrollBar-thumb`}
       >
         {arrayFavoris.length === 0 && (
           <p className="text-center w-full">No favorites yet </p>
@@ -33,12 +33,12 @@ export default function FavorisHome() {
               <div className=" relative w-[170px] h-full p-1">
                 {estFavoris ? (
                   <CoeurPlein
-                    className="w-10 h-10 absolute top-2 left-2 text-[#E00404]"
+                    className="w-12 h-12 absolute top-1 left-1 text-[#E00404] z-10"
                     onClick={() => dispatch(toggleFavori(book))}
                   />
                 ) : (
                   <CoeurVide
-                    className="w-10 h-10 absolute top-2  left-2  text-[#E00404] "
+                    className="w-12 h-12 absolute top-1 left-1 text-[#E00404] z-10 "
                     onClick={() => dispatch(toggleFavori(book))}
                   />
                 )}

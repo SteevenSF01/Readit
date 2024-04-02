@@ -58,7 +58,7 @@ export default function BookCard({ searchByInput, filters }) {
         <h1 className="ps-5 pt-5 my-5">
           <strong>All books</strong>
         </h1>
-        <div className="flex flex-wrap justify-center gap-5 h-[500px] overflow-y-scroll scrollBar-thumb relative ">
+        <div className="flex flex-wrap justify-center gap-5 h-[400px] overflow-y-scroll scrollBar-thumb relative ">
           {testComponents && !logged && (
             <div
               className={`w-full h-screen bg-black fixed top-0 right-0 bg-opacity-55 backdrop-blur-md flex justify-center items-center z-40`}
@@ -77,7 +77,7 @@ export default function BookCard({ searchByInput, filters }) {
                     !theme
                       ? "bg-white text-[#323232] "
                       : " bg-black text-white "
-                  } rounded-xl overflow-hidden w-[45%] `}
+                  } rounded-xl overflow-hidden w-[45%] h-[300px] `}
                   key={i}
                 >
                   <div className=" relative">
