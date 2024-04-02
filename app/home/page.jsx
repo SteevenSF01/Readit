@@ -50,7 +50,7 @@ export default function HomePage() {
             } w-80 py-2 px-5 rounded-xl`}
           />
           <MagnifyingGlassIcon
-            className={`w-6 h-6 absolute top-17 right-14 ${
+            className={`w-6 h-6 absolute top-17 right-20 ${
               theme ? "text-white" : "text-[#161616]"
             }`}
           />

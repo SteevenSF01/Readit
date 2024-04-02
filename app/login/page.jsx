@@ -9,7 +9,6 @@ export default function LoginPage() {
   const logged = useSelector((state) => state.login.logged);
   return <>{logged ? <CreateLogin /> : <SigninLogin />}</>;
 }
-
 function SigninLogin() {
   const theme = useSelector((state) => state.theme.darkMode);
   const dispatch = useDispatch();
