@@ -82,7 +82,7 @@ export default function BookCard({ searchByInput, filters }) {
                 >
                   <div className=" relative w-full h-[50%] ">
                     <div className="flex justify-center items-center w-full h-full bg-gradient-to-b from-slate-900 from-10% via-black via-75% to-black absolute top-0 right-0 opacity-0 hover:opacity-90 transition-all duration-300">
-                      <button className="bg-[#E00404] my-5 py-1 px-6 hover:bg-[#e00404ac] rounded-xl" onClick={()=> dispatch(ajoutPanier(book))}>Buy</button>
+                      <button className="bg-[#E00404] my-5 py-1 px-6 hover:bg-[#e00404ac] rounded-xl text-white" onClick={()=> dispatch(ajoutPanier(book))}>Buy</button>
                     </div>
                     {estFavoris ? (
                       <CoeurPlein

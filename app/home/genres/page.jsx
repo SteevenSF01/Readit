@@ -57,7 +57,6 @@ export default function GenrePage() {
     random_item_filter(classics, data , 'Classics');
     random_item_filter(bdsm, data , 'Bdsm');
   }
-  console.log(fiction);
 
 
   return (

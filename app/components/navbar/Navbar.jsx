@@ -2,23 +2,12 @@
 
 import { useState } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import {
-  XMarkIcon,
-  Bars3Icon,
-  BookOpenIcon,
-  MinusIcon,
-  PlusIcon,
-  TrashIcon,
-} from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3Icon, BookOpenIcon, MinusIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useSelector, useDispatch } from "react-redux";
 import { toggledTheme } from "@/app/lib/features/theme/theme";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  ajoutQuantite,
-  removeQuantite,
-  suppQuantite,
-} from "@/app/lib/features/cart/cartSlice";
+import { ajoutQuantite, removeQuantite, suppQuantite } from "@/app/lib/features/cart/cartSlice";
 
 export default function Navbar() {
   const router = useRouter();
@@ -36,6 +25,7 @@ export default function Navbar() {
     { name: "home", href: "/home" },
     { name: "genres", href: "/home/genres" },
     { name: "contact", href: "/home/contact" },
+    { name: "checkout", href: "/home/checkout" },
   ];
 
   return (
@@ -120,9 +110,10 @@ export default function Navbar() {
           )}
         </div>
         <button
-          className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-4 py-2 rounded-lg cursor-pointer"
+          className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-4 py-2 rounded-lg cursor-pointer relative  "
           onClick={toggleMenu}
         >
+          <div className="size-6 bg-[#E00404] absolute -bottom-3 -right-1 rounded-xl flex justify-center items-center"><p className="text-white">{produits.length}</p></div>
           <ShoppingCartIcon className="h-6 w-6" />
         </button>
       </div>
@@ -135,12 +126,13 @@ export default function Navbar() {
           className={`absolute top-3 right-3 w-6 h-6 cursor-pointer text-[#161616]`}
           onClick={toggleMenu}
         />
-        <div className="my-20 ">
+        <div className="my-20 flex flex-col">
+          {produits.length === 0 && <p>Your basket are empty</p>}
           {produits.map((produit, i) => {
             return (
               <div key={i} className="flex justify-between items-center mb-3">
                 <p>{produit.title}</p>
-                <div className="flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2 my-2">
                   <button
                     className="p-1 rounded-full bg-gray-200 text-gray-600"
                     onClick={() => dispatch(suppQuantite(produit))}
@@ -164,6 +156,7 @@ export default function Navbar() {
               </div>
             );
           })}
+          <button className="bg-[#E00404] text-white py-1 px-5 my-5 rounded-xl uppercase font-semibold border-0 hover:bg-[#e00404ac]" onClick={()=> router.push('/home/checkout')}>checkout</button>
         </div>
         <p className=""></p>
       </div>
