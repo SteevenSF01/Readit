@@ -26,7 +26,7 @@ export default function Newsletter() {
             <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
               <div className="relative w-full">
                 <label
-                  for="email"
+                  htmlFor="email"
                   className="hidden mb-2 text-sm font-medium  "
                 >
                   Email address

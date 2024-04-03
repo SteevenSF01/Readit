@@ -12,18 +12,21 @@ const Carousel = () => {
     const [carouselSize, setCarouselSize] = useState({ width: 0, height: 0 })
     const carouselRef = useRef(null)
 
+  
+
+    
     // useEffect to get the initial carousel size
     useEffect(() => {
-        let elem = carouselRef.current 
-        let { width, height } = elem.getBoundingClientRect()
-        if (carouselRef.current) {
-            setCarouselSize({
-                width,
-                height,
-            })
-        }
+      let elem = carouselRef.current 
+      let { width, height } = elem.getBoundingClientRect()
+      if (carouselRef.current) {
+        setCarouselSize({
+          width,
+          height,
+        })
+      }
     }, [])
-
+    
     useEffect(() => {
       dispatch(fetchBookData());
     }, [dispatch]);
@@ -33,6 +36,13 @@ const Carousel = () => {
     if (error) {
       return <div>Error: {error}</div>;
     }
+    
+        let randomBooks = [];
+        if (data && data.length > 0) {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          randomBooks = [data[randomIndex]];
+        }
+        
 
     return (
         <div className='mt-10 mb-5 flex flex-col items-center'>
@@ -45,8 +55,8 @@ const Carousel = () => {
                         left: -currentImg * carouselSize.width
                     }}
                     className='w-full h-full object-fill absolute flex transition-all duration-300 '>
-                    {/* Map through data to render images */}
-                    {data && data.map((book, i) => (
+                    Map through data to render images
+                    {/* {randomBooks && randomBooks.map((book, i) => (
                         <div key={i} className='relative shrink-0 w-full h-full'>
                             <Image
                                 className='object-fill w-full h-full pointer-events-none'
@@ -56,7 +66,7 @@ const Carousel = () => {
                                 src={book.image_url}
                             />
                         </div>
-                    ))}
+                    ))} */}
                 </div>
             </div>
 
@@ -70,7 +80,7 @@ const Carousel = () => {
                     {"<"}
                 </button>
                 <button
-                    disabled={data ? currentImg === data.length - 1 : ''}
+                    disabled={data ? currentImg === randomBooks.length - 1 : ''}
                     onClick={() => setCurrentImg(prev => prev + 1)}
                     className={`border px-4 py-2 font-bold ${data? currentImg === data.length - 1 : '' && 'opacity-50'}`}
                 >
@@ -82,3 +92,6 @@ const Carousel = () => {
 }
 
 export default Carousel
+
+
+

@@ -1,21 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { HeartIcon } from "@heroicons/react/24/outline";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import {
   XMarkIcon,
   Bars3Icon,
   BookOpenIcon,
+  MinusIcon,
+  PlusIcon,
+  TrashIcon,
 } from "@heroicons/react/24/outline";
 import { useSelector, useDispatch } from "react-redux";
 import { toggledTheme } from "@/app/lib/features/theme/theme";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {
+  ajoutQuantite,
+  removeQuantite,
+  suppQuantite,
+} from "@/app/lib/features/cart/cartSlice";
 
 export default function Navbar() {
   const router = useRouter();
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.darkMode);
+  const produits = useSelector((state) => state.cart.produits);
   const [toggle, setToggle] = useState(true);
   const [burgerMenu, setBurgerMenu] = useState(true);
 
@@ -114,7 +123,7 @@ export default function Navbar() {
           className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-4 py-2 rounded-lg cursor-pointer"
           onClick={toggleMenu}
         >
-          <HeartIcon className="h-6 w-6" />
+          <ShoppingCartIcon className="h-6 w-6" />
         </button>
       </div>
       <div
@@ -126,7 +135,36 @@ export default function Navbar() {
           className={`absolute top-3 right-3 w-6 h-6 cursor-pointer text-[#161616]`}
           onClick={toggleMenu}
         />
-        <div className="my-10 "></div>
+        <div className="my-20 ">
+          {produits.map((produit, i) => {
+            return (
+              <div key={i} className="flex justify-between items-center mb-3">
+                <p>{produit.title}</p>
+                <div className="flex items-center gap-x-2">
+                  <button
+                    className="p-1 rounded-full bg-gray-200 text-gray-600"
+                    onClick={() => dispatch(suppQuantite(produit))}
+                  >
+                    <MinusIcon className="h-4 w-4" />
+                  </button>
+                  <span>{produit.total}</span>
+                  <button
+                    className="p-1 rounded-full bg-gray-200 text-gray-600"
+                    onClick={() => dispatch(ajoutQuantite(produit))}
+                  >
+                    <PlusIcon className="h-4 w-4" />
+                  </button>
+                  <button
+                    className="p-1 rounded-full bg-gray-200 text-gray-600"
+                    onClick={() => dispatch(removeQuantite(produit.id))}
+                  >
+                    <TrashIcon className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
         <p className=""></p>
       </div>
     </nav>

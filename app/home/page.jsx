@@ -44,7 +44,7 @@ export default function HomePage() {
             className={`${
               theme ? "bg-[#323232]" : "bg-white border-2 border-[#161616]"
             } w-80 py-2 px-5 rounded-xl`}
-            style={{ width: "100%" }} // Ajusta el ancho del input para tablet y PC
+            style={{ width: "100%" }} 
           />
           <MagnifyingGlassIcon
             className={`w-6 h-6 absolute top-17 right-20 ${

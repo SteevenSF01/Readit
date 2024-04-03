@@ -10,6 +10,7 @@ import { roboto } from "@/app/fonts";
 import Link from "next/link";
 import Image from "next/image";
 import "./bookcard.css";
+import { ajoutPanier } from "@/app/lib/features/cart/cartSlice";
 
 export default function BookCard({ searchByInput, filters }) {
   const theme = useSelector((state) => state.theme.darkMode);
@@ -32,7 +33,6 @@ export default function BookCard({ searchByInput, filters }) {
       return titleMatch && genreMatch;
     });
   };
-  // On récupère les livres correspondant à la recherche ou filtre
   let filteredBooks = [];
   if (data) {
     filteredBooks = filterBooks(data, searchByInput, filters);
@@ -81,6 +81,9 @@ export default function BookCard({ searchByInput, filters }) {
                   key={i}
                 >
                   <div className=" relative w-full h-[50%] ">
+                    <div className="flex justify-center items-center w-full h-full bg-gradient-to-b from-slate-900 from-10% via-black via-75% to-black absolute top-0 right-0 opacity-0 hover:opacity-90 transition-all duration-300">
+                      <button className="bg-[#E00404] my-5 py-1 px-6 hover:bg-[#e00404ac] rounded-xl" onClick={()=> dispatch(ajoutPanier(book))}>Buy</button>
+                    </div>
                     {estFavoris ? (
                       <CoeurPlein
                         className="w-10 h-10 absolute top-2 left-2 text-[#E00404]"
