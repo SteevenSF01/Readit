@@ -11,12 +11,14 @@ export default function Footer() {
       }`}
     >
       <nav className="grid grid-flow-col gap-4">
+        
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
         <a className="link link-hover">Jobs</a>
         <a className="link link-hover">Press kit</a>
       </nav>
       <nav>
+
         <div className="grid grid-flow-col gap-4">
           <a>
             <svg
@@ -53,7 +55,8 @@ export default function Footer() {
           </a>
         </div>
       </nav>
-      <div className="h-[2px] bg-white w-full "></div>
+      <div className="h-[2px] bg-white w-full ">
+      </div>
       <aside>
         <p>Copyright © 2024 - All right reserved by Readit</p>
       </aside>

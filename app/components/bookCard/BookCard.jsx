@@ -77,10 +77,10 @@ export default function BookCard({ searchByInput, filters }) {
                     !theme
                       ? "bg-white text-[#323232] "
                       : " bg-black text-white "
-                  } rounded-xl overflow-hidden w-[45%] h-[300px] `}
+                  } rounded-xl overflow-hidden w-[45%] h-[280px] `}
                   key={i}
                 >
-                  <div className=" relative">
+                  <div className=" relative w-full h-[50%] ">
                     {estFavoris ? (
                       <CoeurPlein
                         className="w-10 h-10 absolute top-2 left-2 text-[#E00404]"
@@ -101,18 +101,18 @@ export default function BookCard({ searchByInput, filters }) {
                       width={320}
                       height={480}
                       alt={`The cover of ${book.title}`}
-                      className="h-[150px]"
+                      className="h-full w-full"
                     />
                   </div>
-                  <div className="py-3 px-2 relative flex flex-col items-center h-[150px]">
+                  <div className="py-3 px-2 relative flex flex-col items-center h-[50%]">
                     <h1
-                      className={`text-center line-clamp-2 mb-1 ${roboto.className}`}
+                      className={`text-center line-clamp-2 mb-1 text-[13px] ${roboto.className}`}
                     >
                       {book.title}
                     </h1>
                     <ul>
-                      <li className="flex">
-                        <strong>Rating :</strong>
+                      <li className="flex text-[13px]">
+                        <p>Rating :</p>
                         <p className={`${roboto.className}`}>
                           &nbsp;{book.rating}
                         </p>
@@ -120,7 +120,7 @@ export default function BookCard({ searchByInput, filters }) {
                     </ul>
                     <Link href={`/home/details/${book.id - 1}`}>
                       <button
-                        className={`bg-[#E00404] text-white absolute bottom-5 right-6 px-4 py-1 rounded-xl ${roboto.className}`}
+                        className={`bg-[#E00404] text-white absolute bottom-5 right-4 px-4 py-1 rounded-xl ${roboto.className}`}
                       >
                         More details
                       </button>
