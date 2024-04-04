@@ -119,7 +119,7 @@ export default function Navbar() {
       </div>
       <div
         className={`h-screen transition-all duration-500 z-50 absolute top-0 right-0 overflow-hidden p-0  ${
-          toggle ? "w-0" : "w-[320px] h-screen px-6 border-s-2 border-black"
+          toggle ? "w-0" : "w-[320px] h-screen px-6"
         } ${theme ? "bg-[#323232] text-white" : "bg-white text-[#161616]"}`}
       >
         <XMarkIcon
