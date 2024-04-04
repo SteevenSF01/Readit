@@ -94,7 +94,7 @@ export default function BookCard({ searchByInput, filters }) {
                       <CoeurVide
                         className="w-10 h-10 absolute top-2  left-2  text-[#E00404] "
                         onClick={() =>
-                          logged
+                          !logged
                             ? dispatch(toggleFavori(book))
                             : setTestComponents(true)
                         }

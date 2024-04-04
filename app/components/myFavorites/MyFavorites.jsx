@@ -11,13 +11,6 @@ export default function FavorisHome() {
 
   return (
     <>
-      <section
-        className={`${
-          arrayFavoris.length == 0 ? "h-[100px]" : "min-h-[250px]"
-        } ${
-          !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
-        } w-full flex overflow-x-scroll items-center gap-x-5 px-5 rounded-xl scrollBar-thumb`}
-      >
         {arrayFavoris.length === 0 && (
           <p className="text-center w-full">No favorites yet </p>
         )}
@@ -67,7 +60,6 @@ export default function FavorisHome() {
             </div>
           );
         })}
-      </section>
     </>
   );
 }

@@ -11,11 +11,13 @@ import Footer from "../components/footer/Footer";
 import Newsletter from "../components/newsletter/Newsletter";
 import { searchBook } from "../lib/features/filter/filterSlice";
 
+
 export default function HomePage() {
   const [inputValue, setInputValue] = useState("");
   const theme = useSelector((state) => state.theme.darkMode);
   const searchByInput = useSelector((state) => state.filter.searchBook);
   const dispatch = useDispatch();
+  const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -43,7 +45,15 @@ export default function HomePage() {
         <div className="md:grid grid-cols-2 gap-5">
           <div className="my-5">
             <h1 className={`${merriweather.className} ${theme ? "text-white" : "text-[#161616]"} my-4`}>My Favorites</h1>
+            <div         className={`${
+          arrayFavoris.length == 0 ? "h-[100px]" : "min-h-[250px]"
+        } ${
+          !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
+        } w-full flex overflow-x-scroll items-center gap-x-5 px-5 rounded-xl scrollBar-thumb`}
+>
+
             <FavorisHome />
+            </div>
           </div>
           <div className="my-5">
             <h1 className={`${merriweather.className} ${theme ? "text-white" : "text-[#161616]"} my-4`}>Genders</h1>

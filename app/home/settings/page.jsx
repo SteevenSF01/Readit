@@ -4,11 +4,13 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { merriweather } from "@/app/fonts";
 import { useRouter } from "next/navigation";
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import FavorisHome from "@/app/components/myFavorites/MyFavorites";
 
 const UserSettingsPage = () => {
   const router = useRouter();
   const theme = useSelector((state) => state.theme.darkMode);
+  const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const optionSettings = (option) => {
@@ -26,37 +28,42 @@ const UserSettingsPage = () => {
           <div
             className={`${
               theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
-            } ${merriweather.className} h-screen p-10`}
+            } ${merriweather.className} h-screen p-10 w-full`}
           >
-            <button className="bg-[#E00404] text-white mb-5 p-1 rounded-lg" onClick={()=> router.push('/home')}><ArrowLeftIcon className="w-6 h-6" /></button>
+            <button
+              className="bg-[#E00404] text-white mb-5 p-1 rounded-lg"
+              onClick={() => router.push("/home")}
+            >
+              <ArrowLeftIcon className="w-6 h-6" />
+            </button>
             <h1 className="text-3xl font-bold mb-8">User Settings</h1>
-            <ul className="space-y-4  flex flex-col gap-4 items-start">
+            <ul className="flex flex-wrap gap-5 md:flex-col items-start w-full">
               <button
-                className="bg-[#E00404] text-white w-[150px] py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
                 onClick={() => optionSettings("Notifications")}
               >
                 Notifications
               </button>
               <button
-                className="bg-[#E00404] text-white w-[150px] py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
                 onClick={() => optionSettings("Account")}
               >
                 Account
               </button>
               <button
-                className="bg-[#E00404] text-white w-[150px] py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
                 onClick={() => optionSettings("Security")}
               >
                 Security
               </button>
               <button
-                className="bg-[#E00404] text-white w-[150px] py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
                 onClick={() => optionSettings("Preferences")}
               >
                 Preferences
               </button>
               <button
-                className="bg-[#E00404] text-white w-[150px] py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
                 onClick={() => optionSettings("Favorites")}
               >
                 Favorites
@@ -67,15 +74,23 @@ const UserSettingsPage = () => {
       );
     } else {
       return (
-        <div className={`${theme ? 'bg-[#161616] text-white' : 'bg-white text-[#161616]'} ${merriweather.className} h-screen p-8`}>
+        <div
+          className={`${
+            theme ? "bg-[#161616] text-white" : "bg-white text-[#161616]"
+          } ${merriweather.className} h-fit px-5 py-10 w-full`}
+        >
           <h1 className="text-3xl font-bold mb-8">{selectedOption} Settings</h1>
-          {renderOptionContent(selectedOption)}
-          <button
-            onClick={backToSettings}
-            className="bg-[#E00404] text-white py-2 px-10 rounded-xl font-semibold mt-4"
-          >
-            Back
-          </button>
+          <div className="">
+            <div className="w-full">
+              <button
+                onClick={backToSettings}
+                className="bg-[#E00404] text-white py-2 px-10 rounded-xl font-semibold mt-4 my-5"
+              >
+                Back
+              </button>
+              {renderOptionContent(selectedOption)}
+            </div>
+          </div>
         </div>
       );
     }
@@ -85,32 +100,36 @@ const UserSettingsPage = () => {
     switch (option) {
       case "Notifications":
         return (
-          <div>
+          <div className="h-[800px] ">
             <p>Notification settings...</p>
           </div>
         );
       case "Account":
         return (
-          <div>
+          <div className="h-[800px] ">
             <p>Account settings...</p>
           </div>
         );
       case "Security":
         return (
-          <div>
+          <div className="h-[800px] ">
             <p>Security settings...</p>
           </div>
         );
       case "Preferences":
         return (
-          <div>
+          <div className="h-[800px] ">
             <p>Preferences settings...</p>
           </div>
         );
       case "Favorites":
         return (
-          <div>
-            <p>Favorites settings...</p>
+          <div
+            className={`${
+              arrayFavoris.length === 0 ? "h-screen" : "h-fit"
+            } flex flex-wrap gap-6`}
+          >
+            <FavorisHome />
           </div>
         );
       default:
