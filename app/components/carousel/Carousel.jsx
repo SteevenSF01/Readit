@@ -1,8 +1,8 @@
-'use client'
-import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchBookData } from '@/app/lib/features/data/data';
+"use client";
+import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchBookData } from "@/app/lib/features/data/data";
 
 const Carousel = () => {
   const dispatch = useDispatch();
@@ -12,10 +12,12 @@ const Carousel = () => {
   const carouselRef = useRef(null);
   const [showImages, setShowImages] = useState(false);
 
+  // useEffect pour le data
   useEffect(() => {
     dispatch(fetchBookData());
   }, [dispatch]);
 
+  //useEffect pour le carousel
   useEffect(() => {
     let elem = carouselRef.current;
     let { width, height } = elem.getBoundingClientRect();
@@ -27,6 +29,7 @@ const Carousel = () => {
     }
   }, []);
 
+  // useEffect pour le timeout et afficher les images dans le carousel
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowImages(true);
@@ -34,6 +37,15 @@ const Carousel = () => {
 
     return () => clearTimeout(timeout);
   }, []);
+
+  // useEffect pour le carousel automatique
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % selectedBooks.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [selectedBooks.length]);
 
   if (loading) {
     return <div>The books are loading...</div>;
@@ -44,57 +56,39 @@ const Carousel = () => {
   }
 
   return (
-    <div className=' mb-5 flex flex-col items-center'>
+    <div className="mb-5 flex flex-col items-center">
       {/* Carousel container */}
-      <div className='w-[100%] h-60 flex bg-[#323232] rounded-md overflow-hidden relative justify-center items-center'>
+      <div className="w-full md:w-[80%] lg:w-[60%] h-60 md:h-96 flex bg-[#323232] rounded-md overflow-hidden relative justify-center items-center">
         {!showImages && <div>Loading...</div>}
         {/* Image container */}
         <div
+          className="w-[100%] h-full object-fill absolute flex transition-all duration-300 "
           ref={carouselRef}
           style={{
             left: -currentImg * carouselSize.width,
           }}
-          className='w-full h-full object-fill absolute flex transition-all duration-300 '>
+        >
           {showImages &&
             selectedBooks.map((book, i) => (
-              <div key={i} className='relative shrink-0 w-full h-full'>
+              <div key={i} className="relative shrink-0 w-full h-full">
                 <Image
-                  className='object-fill w-full h-full pointer-events-none'
+                  className="object-fill w-full h-full pointer-events-none"
                   alt={`carousel-image-${i}`}
                   width={540}
                   height={420}
                   src={book.image_url}
                 />
-                <div className='flex flex-col p-5 items-center w-full h-full bg-gradient-to-b from-slate-900 from-10% via-black via-75% to-black absolute top-0 right-0 opacity-0 hover:opacity-90 transition-all duration-300 gap-5 overflow-auto'>
-                  <h1 className='my-3'>Quotes</h1>
-                  <p className='text-[13px]'>{book.Quote1}</p>
-                  <p className='text-[13px]'>{book.Quote2}</p>
+                <div className="flex flex-col p-5 items-center w-full h-full bg-gradient-to-b from-slate-900 from-10% via-black via-75% to-black absolute top-0 right-0 opacity-0 hover:opacity-90 transition-all duration-300 gap-5 overflow-auto">
+                  <h1 className="my-3">Quotes</h1>
+                  <p className="text-[13px] text-center">{book.Quote1}</p>
+                  <p className="text-[13px] text-center">{book.Quote2}</p>
                 </div>
               </div>
             ))}
         </div>
-      </div>
-
-      {/* Navigation buttons */}
-      <div className='flex justify-between w-full mt-6'>
-        <button
-          disabled={currentImg === 0}
-          onClick={() => setCurrentImg((prev) => prev - 1)}
-          className={`px-12 py-2 font-bold bg-[#E00404] rounded-lg ${currentImg === 0 && 'opacity-50'}`}>
-          {'<'}
-        </button>
-        <button
-          disabled={selectedBooks ? currentImg === selectedBooks.length - 1 : ''}
-          onClick={() => setCurrentImg((prev) => prev + 1)}
-          className={`px-12 py-2 font-bold bg-[#E00404] rounded-lg ${
-            selectedBooks ? (currentImg === selectedBooks.length - 1 ? 'opacity-50' : '') : ''
-          }`}>
-          {'>'}
-        </button>
       </div>
     </div>
   );
 };
 
 export default Carousel;
-
