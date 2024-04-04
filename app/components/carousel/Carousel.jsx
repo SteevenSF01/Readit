@@ -44,7 +44,7 @@ const Carousel = () => {
   }
 
   return (
-    <div className='mt-10 mb-5 flex flex-col items-center'>
+    <div className=' mb-5 flex flex-col items-center'>
       {/* Carousel container */}
       <div className='w-[100%] h-60 flex bg-[#323232] rounded-md overflow-hidden relative justify-center items-center'>
         {!showImages && <div>Loading...</div>}

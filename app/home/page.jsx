@@ -36,23 +36,7 @@ export default function HomePage() {
         } h-full ${merriweather.className}`}
         style={{ padding: "20px" }}
       >
-        <div className="w-full flex justify-center items-center gap-x-2 pt-5 relative">
-          <input
-            type="text"
-            placeholder="Search a book..."
-            value={inputValue}
-            onChange={handleInputChange}
-            className={`${
-              theme ? "bg-[#323232]" : "bg-white border-2 border-[#161616]"
-            } w-80 py-2 px-5 rounded-xl`}
-            style={{ width: "100%" }} 
-          />
-          <MagnifyingGlassIcon
-            className={`w-6 h-6 absolute top-17 right-20 ${
-              theme ? "text-white" : "text-[#161616]"
-            }`}
-          />
-        </div>
+
         <div>
           <Carousel />
         </div>
@@ -66,7 +50,24 @@ export default function HomePage() {
             <FiltreCategories onFilterChange={handleFilterChange} />
           </div>
         </div>
-        <div className="mt-5">
+        <div className="w-full flex justify-center items-center gap-x-2 pt-5 relative">
+          <input
+            type="text"
+            placeholder="Search a book..."
+            value={inputValue}
+            onChange={handleInputChange}
+            className={`${
+              theme ? "bg-[#323232]" : "bg-white border-2 border-[#161616]"
+            } w-80 py-2 px-5 rounded-xl`}
+            style={{ width: "100%" }} 
+          />
+          <MagnifyingGlassIcon
+            className={`w-6 h-6 absolute top-17 right-7 ${
+              theme ? "text-white" : "text-[#161616]"
+            }`}
+          />
+        </div>
+        <div className="mt-10">
           <BookCard searchByInput={searchByInput} filters={filter} />
         </div>
         <div>

@@ -127,8 +127,7 @@ export default function Navbar() {
           onClick={toggleMenu}
         />
         <div className="my-20 flex flex-col">
-          {produits.length === 0 && <p>Your basket are empty</p>}
-          {produits.map((produit, i) => {
+            {produits.map((produit, i) => {
             return (
               <div key={i} className="flex justify-between items-center mb-3">
                 <p>{produit.title}</p>
@@ -156,7 +155,7 @@ export default function Navbar() {
               </div>
             );
           })}
-          <button className="bg-[#E00404] text-white py-1 px-5 my-5 rounded-xl uppercase font-semibold border-0 hover:bg-[#e00404ac]" onClick={()=> {router.push('/home/checkout'); toggleMenu()}}>checkout</button>
+          <button className="bg-[#E00404] text-white py-1 px-5 my-5 rounded-xl uppercase font-semibold border-0 hover:bg-[#e00404ac]" onClick={()=> {router.push('/home/checkout'); toggleMenu()}} disabled={produits.length === 0}>{produits.length === 0 ? 'empty basket' : 'checkout'}</button>
         </div>
         <p className=""></p>
       </div>
