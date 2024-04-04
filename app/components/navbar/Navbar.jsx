@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { XMarkIcon, Bars3Icon, BookOpenIcon, MinusIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, Bars3Icon, BookOpenIcon, MinusIcon, PlusIcon, TrashIcon, UserIcon } from "@heroicons/react/24/outline";
 import { useSelector, useDispatch } from "react-redux";
 import { toggledTheme } from "@/app/lib/features/theme/theme";
 import Link from "next/link";
@@ -26,6 +26,7 @@ export default function Navbar() {
     { name: "genres", href: "/home/genres" },
     { name: "contact", href: "/home/contact" },
     { name: "checkout", href: "/home/checkout" },
+    { name: <UserIcon className="w-6 h-6" />, href: "/home/settings" },
   ];
 
   return (
@@ -113,7 +114,11 @@ export default function Navbar() {
           className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-4 py-2 rounded-lg cursor-pointer relative  "
           onClick={toggleMenu}
         >
-          <div className="size-6 bg-[#E00404] absolute -bottom-3 -right-1 rounded-xl flex justify-center items-center"><p className="text-white">{produits.length}</p></div>
+
+
+
+          
+          <div className="size-6 bg-[#E00404] absolute -bottom-2 -right-0 rounded-xl flex justify-center items-center"><p className="text-white">{produits.length}</p></div>
           <ShoppingCartIcon className="h-6 w-6" />
         </button>
       </div>
