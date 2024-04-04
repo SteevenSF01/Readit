@@ -112,7 +112,7 @@ export default function GenrePage() {
 
         <div className="px-5">
         <h1 className={`my-5 text-end text-2xl ${merriweather.className}`}>
-        Bdsm
+        Bdsm (Categorie d Eric)
         </h1>
           <BestSellers books={bdsm} />
         </div>

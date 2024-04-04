@@ -65,6 +65,11 @@ const Carousel = () => {
                   height={420}
                   src={book.image_url}
                 />
+                <div className='flex flex-col p-5 items-center w-full h-full bg-gradient-to-b from-slate-900 from-10% via-black via-75% to-black absolute top-0 right-0 opacity-0 hover:opacity-90 transition-all duration-300 gap-5 overflow-auto'>
+                  <h1 className='my-3'>Quotes</h1>
+                  <p className='text-[13px]'>{book.Quote1}</p>
+                  <p className='text-[13px]'>{book.Quote2}</p>
+                </div>
               </div>
             ))}
         </div>

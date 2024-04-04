@@ -4,12 +4,13 @@ export const fetchBookData = createAsyncThunk('user/fetchUserData', async () => 
     const response = await fetch('https:/example-data.draftbit.com/books');
     const jsonData = await response.json();
     jsonData.forEach(book => {
-        book.prix = book.rating * 3;
-        book.prixActuel = book.prix;
+        book.prix = parseFloat(Number(book.rating * 3).toFixed(2));
+        book.prixActuel = parseFloat(Number(book.prix).toFixed(2))
         book.total = 1;
     });
     return jsonData;
 });
+
 
 export const userSlice = createSlice({
     name: 'book',

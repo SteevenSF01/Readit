@@ -156,7 +156,7 @@ export default function Navbar() {
               </div>
             );
           })}
-          <button className="bg-[#E00404] text-white py-1 px-5 my-5 rounded-xl uppercase font-semibold border-0 hover:bg-[#e00404ac]" onClick={()=> router.push('/home/checkout')}>checkout</button>
+          <button className="bg-[#E00404] text-white py-1 px-5 my-5 rounded-xl uppercase font-semibold border-0 hover:bg-[#e00404ac]" onClick={()=> {router.push('/home/checkout'); toggleMenu()}}>checkout</button>
         </div>
         <p className=""></p>
       </div>
