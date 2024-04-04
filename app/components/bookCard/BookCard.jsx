@@ -36,6 +36,7 @@ export default function BookCard({ searchByInput, filters }) {
   let filteredBooks = [];
   if (data) {
     filteredBooks = filterBooks(data, searchByInput, filters);
+    console.log(filters);
   }
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function BookCard({ searchByInput, filters }) {
         } rounded-xl pb-5`}
       >
         <h1 className="ps-5 pt-5 my-5">
-          <strong>All books</strong>
+          <strong>{filters.length === 0 ? 'All' : filters} </strong>
         </h1>
         <div className="flex flex-wrap justify-center gap-5 h-[400px] overflow-y-scroll scrollBar-thumb relative ">
           {testComponents && !logged && (
