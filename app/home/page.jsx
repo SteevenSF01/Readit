@@ -9,6 +9,7 @@ import FavorisHome from "../components/myFavorites/MyFavorites";
 import BookCard from "../components/bookCard/BookCard";
 import Footer from "../components/footer/Footer";
 import Newsletter from "../components/newsletter/Newsletter";
+import { searchBook } from "../lib/features/filter/filterSlice";
 
 export default function HomePage() {
   const [inputValue, setInputValue] = useState("");

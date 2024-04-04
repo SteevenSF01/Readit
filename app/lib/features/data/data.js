@@ -23,7 +23,7 @@ export const userSlice = createSlice({
         .addCase(fetchBookData.fulfilled, (state, action) => {
             state.loading = false;
             state.data = action.payload;
-            const allBooks = action.payload;
+            const allBooks = [...action.payload];
             state.selectedBooks = allBooks.sort(() => 0.5 - Math.random()).slice(0, 5);
             })
             .addCase(fetchBookData.rejected, (state, action) => {
