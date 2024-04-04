@@ -36,7 +36,6 @@ export default function BookCard({ searchByInput, filters }) {
   let filteredBooks = [];
   if (data) {
     filteredBooks = filterBooks(data, searchByInput, filters);
-    console.log(filters);
   }
 
   useEffect(() => {
@@ -59,7 +58,7 @@ export default function BookCard({ searchByInput, filters }) {
         <h1 className="ps-5 pt-5 my-5">
           <strong>{filters.length === 0 ? 'All' : filters} </strong>
         </h1>
-        <div className="flex flex-wrap justify-center gap-5 h-[400px] overflow-y-scroll scrollBar-thumb relative ">
+        <div className="flex flex-wrap justify-center gap-5 h-[400px] md:h-[500px] lg:h-[600px] overflow-y-scroll scrollBar-thumb relative ">
           {testComponents && !logged && (
             <div
               className={`w-full h-screen bg-black fixed top-0 right-0 bg-opacity-55 backdrop-blur-md flex justify-center items-center z-40`}
@@ -78,7 +77,7 @@ export default function BookCard({ searchByInput, filters }) {
                     !theme
                       ? "bg-white text-[#323232] "
                       : " bg-black text-white "
-                  } rounded-xl overflow-hidden w-[45%] h-[280px] `}
+                  } rounded-xl overflow-hidden w-[45%] h-[280px] md:w-[28%] lg:w-[15%] lg:shadow-[0_3px_10px_rgb(0,0,0,0.8)] `}
                   key={i}
                 >
                   <div className=" relative w-full h-[50%] ">
@@ -124,7 +123,7 @@ export default function BookCard({ searchByInput, filters }) {
                     </ul>
                     <Link href={`/home/details/${book.id - 1}`}>
                       <button
-                        className={`bg-[#E00404] text-white absolute bottom-5 right-4 px-4 py-1 rounded-xl ${roboto.className}`}
+                        className={`bg-[#E00404] text-white absolute bottom-5 right-4 md:right-10 lg:right-12 px-4 py-1 rounded-xl ${roboto.className}`}
                       >
                         More details
                       </button>

@@ -10,6 +10,7 @@ import BookCard from "../components/bookCard/BookCard";
 import Footer from "../components/footer/Footer";
 import Newsletter from "../components/newsletter/Newsletter";
 import { searchBook } from "../lib/features/filter/filterSlice";
+import AboutUs from "../components/aboutUs/AboutUs";
 
 
 export default function HomePage() {
@@ -42,8 +43,11 @@ export default function HomePage() {
         <div>
           <Carousel />
         </div>
-        <div className="md:grid grid-cols-2 gap-5">
-          <div className="my-5">
+        <div className="">
+          <AboutUs />
+        </div>
+        <div className="md:flex gap-5">
+          <div className="my-5 md:hidden ">
             <h1 className={`${merriweather.className} ${theme ? "text-white" : "text-[#161616]"} my-4`}>My Favorites</h1>
             <div         className={`${
           arrayFavoris.length == 0 ? "h-[100px]" : "min-h-[250px]"
@@ -51,11 +55,10 @@ export default function HomePage() {
           !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
         } w-full flex overflow-x-scroll items-center gap-x-5 px-5 rounded-xl scrollBar-thumb`}
 >
-
             <FavorisHome />
             </div>
           </div>
-          <div className="my-5">
+          <div className="my-5 lg:my-10">
             <h1 className={`${merriweather.className} ${theme ? "text-white" : "text-[#161616]"} my-4`}>Genders</h1>
             <FiltreCategories onFilterChange={handleFilterChange} />
           </div>
@@ -68,19 +71,14 @@ export default function HomePage() {
             onChange={handleInputChange}
             className={`${
               theme ? "bg-[#323232]" : "bg-white border-2 border-[#161616]"
-            } w-80 py-2 px-5 rounded-xl`}
-            style={{ width: "100%" }} 
+            } py-2 w-full md:w-[50%] lg:w-[40%] px-5  rounded-xl`}
           />
-          <MagnifyingGlassIcon
-            className={`w-6 h-6 absolute top-17 right-7 ${
-              theme ? "text-white" : "text-[#161616]"
-            }`}
-          />
+
         </div>
-        <div className="mt-10">
+        <div className="mt-16">
           <BookCard searchByInput={searchByInput} filters={filter} />
         </div>
-        <div>
+        <div className="mb-5 mt-16">
           <Newsletter />
         </div>
         <Footer />

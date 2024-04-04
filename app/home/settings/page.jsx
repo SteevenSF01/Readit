@@ -36,39 +36,54 @@ const UserSettingsPage = () => {
             >
               <ArrowLeftIcon className="w-6 h-6" />
             </button>
-            <h1 className="text-3xl font-bold mb-8">User Settings</h1>
-            <ul className="flex flex-wrap gap-5 md:flex-col items-start w-full">
-              <button
-                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
-                onClick={() => optionSettings("Notifications")}
-              >
-                Notifications
-              </button>
-              <button
-                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
-                onClick={() => optionSettings("Account")}
-              >
-                Account
-              </button>
-              <button
-                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
-                onClick={() => optionSettings("Security")}
-              >
-                Security
-              </button>
-              <button
-                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
-                onClick={() => optionSettings("Preferences")}
-              >
-                Preferences
-              </button>
-              <button
-                className="bg-[#E00404] text-white w-[45%] py-2 rounded-xl cursor-pointer text-lg font-semibold"
-                onClick={() => optionSettings("Favorites")}
-              >
-                Favorites
-              </button>
-            </ul>
+            <div>
+              <h1 className="text-3xl font-bold mb-8 lg:ps-32">
+                User Settings
+              </h1>
+              <div className="flex w-full justify-between">
+                <div className="w-[50%] lg:flex lg:justify-end ">
+                  <ul className="flex flex-wrap gap-5 md:flex-col items-start w-full md:w-[80%] ">
+                    <button
+                      className="bg-[#E00404] text-white w-[45%] md:w-full  py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                      onClick={() => optionSettings("Notifications")}
+                    >
+                      Notifications
+                    </button>
+                    <button
+                      className="bg-[#E00404] text-white w-[45%] md:w-full  py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                      onClick={() => optionSettings("Account")}
+                    >
+                      Account
+                    </button>
+                    <button
+                      className="bg-[#E00404] text-white w-[45%] md:w-full  py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                      onClick={() => optionSettings("Security")}
+                    >
+                      Security
+                    </button>
+                    <button
+                      className="bg-[#E00404] text-white w-[45%] md:w-full  py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                      onClick={() => optionSettings("Preferences")}
+                    >
+                      Preferences
+                    </button>
+                    <button
+                      className="bg-[#E00404] text-white w-[45%] md:w-full  py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                      onClick={() => optionSettings("Favorites")}
+                    >
+                      Favorites
+                    </button>
+                  </ul>
+                </div>
+                <div className="w-[60%] flex justify-center items-center">
+                  <div className="avatar online ">
+                    <div className="w-72 rounded-full">
+                      <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </>
       );
@@ -80,16 +95,14 @@ const UserSettingsPage = () => {
           } ${merriweather.className} h-fit px-5 py-10 w-full`}
         >
           <h1 className="text-3xl font-bold mb-8">{selectedOption} Settings</h1>
-          <div className="">
-            <div className="w-full">
-              <button
-                onClick={backToSettings}
-                className="bg-[#E00404] text-white py-2 px-10 rounded-xl font-semibold mt-4 my-5"
-              >
-                Back
-              </button>
-              {renderOptionContent(selectedOption)}
-            </div>
+          <div className="w-full">
+            <button
+              onClick={backToSettings}
+              className="bg-[#E00404] text-white py-2 px-10 rounded-xl font-semibold mt-4 my-5"
+            >
+              Back
+            </button>
+            {renderOptionContent(selectedOption)}
           </div>
         </div>
       );
@@ -126,7 +139,7 @@ const UserSettingsPage = () => {
         return (
           <div
             className={`${
-              arrayFavoris.length === 0 ? "h-screen" : "h-fit"
+              arrayFavoris.length <= 4 ? "h-screen" : "h-fit"
             } flex flex-wrap gap-6`}
           >
             <FavorisHome />

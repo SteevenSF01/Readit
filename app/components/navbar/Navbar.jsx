@@ -33,7 +33,7 @@ export default function Navbar() {
     <nav
       className={`${
         theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
-      } py-3 px-5 flex justify-end relative items-center`}
+      } py-3 px-5 flex justify-end relative items-center shadow-[0px_1px_5px_0px_#f7fafc]`}
     >
       <div className="flex gap-x-4 w-full ">
         <h1

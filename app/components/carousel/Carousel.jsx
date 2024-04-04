@@ -42,7 +42,7 @@ const Carousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImg((prev) => (prev + 1) % selectedBooks.length);
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [selectedBooks.length]);
@@ -58,7 +58,7 @@ const Carousel = () => {
   return (
     <div className="mb-5 flex flex-col items-center justify-center bg-[#323232] bg-opacity-20 ">
       {/* Carousel container */}
-      <div className="w-full md:w-[80%] lg:w-[60%] h-60 md:h-96 flex bg-[#323232] rounded-md overflow-hidden relative justify-center items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+      <div className="w-full md:w-[80%] lg:w-[60%] h-60 md:h-96 lg:h-[500px] flex bg-[#323232] rounded-md overflow-hidden relative justify-center items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
         {!showImages && <p className="text-white">Loading...</p>}
         {/* Image container */}
         <div
@@ -79,9 +79,9 @@ const Carousel = () => {
                   src={book.image_url}
                 />
                 <div className="flex flex-col p-5 items-center w-full h-full bg-gradient-to-b from-slate-900 from-10% via-black via-75% to-black absolute top-0 right-0 opacity-0 hover:opacity-90 transition-all duration-300 gap-5 overflow-auto">
-                  <h1 className="my-3 text-white">Quotes</h1>
-                  <p className="text-[13px] text-center text-white">{book.Quote1}</p>
-                  <p className="text-[13px] text-center text-white">{book.Quote2}</p>
+                  <h1 className="my-3 text-white md:text-4xl">Quotes</h1>
+                  <p className="text-[13px] text-center text-white md:text-xl">{book.Quote1}</p>
+                  <p className="text-[13px] text-center text-white md:text-xl">{book.Quote2}</p>
                 </div>
               </div>
             ))}

@@ -36,7 +36,7 @@ const ContactPage = () => {
       <section className={`${theme ? "bg-[#161616]" : "bg-white"} pt-10`}>
         <div
           className={`${
-            theme ? "bg-[#323232] text-white" : "bg-white text-[#161616]"
+            theme ? "bg-[#161616] text-white" : "bg-white text-[#161616]"
           } flex flex-col items-center justify-center h-fit mx-5 mb-5  p-5 rounded-lg`}
         >
           <h1 className="text-3xl font-bold mb-8 pt-5">Contact Us</h1>

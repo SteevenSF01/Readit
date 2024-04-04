@@ -9,7 +9,7 @@ export default function Newsletter() {
         theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
       }`}
     >
-      <div className="py-8 px-4 mx-auto max-w-screen-xl md:w-[60%] lg:py-16 lg:px-6 bg-[#323232] bg-opacity-45 rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+      <div className="py-8 px-4 mx-auto max-w-screen-xl md:w-[100%] lg:py-16 lg:px-6 bg-[#323232] bg-opacity-45 rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
         <div className="mx-auto max-w-screen-md sm:text-center md:w-[50%] text-white ">
           <h2
             className={`mb-4 text-3xl tracking-tight font-extrabold  sm:text-4xl ${merriweather.className}`}
@@ -17,7 +17,7 @@ export default function Newsletter() {
             Sign up for our newsletter
           </h2>
           <p
-            className={`mx-auto mb-8 w-2xl font-light text-center md:mb-12 text-xl ${roboto.className}`}
+            className={`mx-auto mb-8 w-2xl font-light text-start md:mb-12 text-[16px] ${roboto.className}`}
           >
             Stay up to date with the roadmap progress, announcements and
             exclusive discounts feel free to sign up with your email.

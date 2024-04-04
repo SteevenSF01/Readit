@@ -77,7 +77,7 @@ export default function FiltreCategories({ onFilterChange }) {
                     theme
                       ? "bg-[#323232] text-white"
                       : "bg-white text-[#323232] border-2 border-[#323232] shadow-[0_3px_10px_rgb(0,0,0,0.5)] "
-                  } px-5 py-2 rounded-xl text-[15px] w-[45%] md:w-[80%] h-[35%] ${
+                  } px-5 py-2 rounded-xl text-[15px] w-[45%] md:w-[20%] lg:w-[15%] h-[35%] ${
                     roboto.className
                   } ${selectedFilter.includes(genre) ? "selected" : ""}`}
                   key={i}
