@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       <div className="flex gap-x-4 w-full ">
         <h1
-          className="flex items-center me-auto"
+          className="flex items-center me-auto md:text-2xl md:font-semibold cursor-pointer"
           onClick={() => router.push("/home")}
         >
           <BookOpenIcon className="w-6 h-6" />
@@ -66,11 +66,11 @@ export default function Navbar() {
           </svg>
         </label>
 
-        <ul className="gap-x-5 items-center hidden md:flex ">
+        <ul className="gap-x-5 items-center hidden md:flex font-semibold">
           {links.map((link) => {
             return (
               <Link
-                className="cursor-pointer hover:underline"
+                className="cursor-pointer hover:underline hover:underline-offset-4"
                 key={link.name}
                 href={link.href}
               >

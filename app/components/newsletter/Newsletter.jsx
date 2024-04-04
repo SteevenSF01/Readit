@@ -9,22 +9,22 @@ export default function Newsletter() {
         theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
       }`}
     >
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div className="mx-auto max-w-screen-md sm:text-center">
+      <div className="py-8 px-4 mx-auto max-w-screen-xl md:w-[60%] lg:py-16 lg:px-6 bg-[#323232] bg-opacity-45 rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+        <div className="mx-auto max-w-screen-md sm:text-center md:w-[50%] text-white ">
           <h2
             className={`mb-4 text-3xl tracking-tight font-extrabold  sm:text-4xl ${merriweather.className}`}
           >
             Sign up for our newsletter
           </h2>
           <p
-            className={`mx-auto mb-8 max-w-2xl font-light  md:mb-12 sm:text-xl ${roboto.className}`}
+            className={`mx-auto mb-8 w-2xl font-light text-center md:mb-12 text-xl ${roboto.className}`}
           >
             Stay up to date with the roadmap progress, announcements and
             exclusive discounts feel free to sign up with your email.
           </p>
           <form action="#">
-            <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
-              <div className="relative w-full">
+            <div className=" mx-auto mb-3 space-y-4 max-w-screen-sm md:flex justify-center items-center sm:space-y-0">
+              <div className="relative w-full flex items-center ">
                 <label
                   htmlFor="email"
                   className="hidden mb-2 text-sm font-medium  "
@@ -61,7 +61,7 @@ export default function Newsletter() {
               </div>
             </div>
             <div
-              className={`mx-auto max-w-screen-sm text-sm text-left  newsletter-form-footer ${roboto.className}`}
+              className={`mx-auto max-w-screen-sm md:w-[75%] text-sm text-left  newsletter-form-footer ${roboto.className}`}
             >
               We care about the protection of your data. <br />
               <a
