@@ -15,7 +15,7 @@ const OrderConfirmationPage = () => {
         Thank you for your order!
       </h1>
       <p className="text-lg decoration-[#E00404] underline-offset-4 underline ">
-        Your order has been successfully placed. We'll email you the details shortly.
+        Your order has been successfully placed. We ll email you the details shortly.
       </p>
     </section>
   );

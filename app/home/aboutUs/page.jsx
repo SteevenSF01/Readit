@@ -14,7 +14,7 @@ const AboutUsPage = () => {
       <div className="max-w-3xl text-center">
         <h1 className="text-3xl font-bold mb-8 underline underline-offset-4 decoration-[#E00404]">About Us</h1>
         <p className="mb-8">
-          Welcome to Readit, your ultimate destination for all things related to books and reading! At Readit, we're passionate about literature and are dedicated to providing book lovers with a platform to discover, explore, and indulge in their love for reading.
+          Welcome to Readit, your ultimate destination for all things related to books and reading! At Readit, we re passionate about literature and are dedicated to providing book lovers with a platform to discover, explore, and indulge in their love for reading.
         </p>
         <h2 className="text-2xl font-bold mb-4 underline underline-offset-4 decoration-[#E00404]">Who We Are</h2>
         <p className="mb-8">
@@ -22,7 +22,7 @@ const AboutUsPage = () => {
         </p>
         <h2 className="text-2xl font-bold mb-4 underline underline-offset-4 decoration-[#E00404]">What We Do</h2>
         <p className="mb-8">
-          At Readit, we strive to make your reading experience enjoyable and convenient. Whether you're looking for recommendations, wanting to share your favorite reads, or seeking a cozy corner to immerse yourself in the world of literature, we've got you covered. Our platform offers a plethora of features and services designed to enhance your reading journey.
+          At Readit, we strive to make your reading experience enjoyable and convenient. Whether you re looking for recommendations, wanting to share your favorite reads, or seeking a cozy corner to immerse yourself in the world of literature, we ve got you covered. Our platform offers a plethora of features and services designed to enhance your reading journey.
         </p>
         <h2 className="text-2xl font-bold mb-4 underline underline-offset-4 decoration-[#E00404]">What You Can Do Here</h2>
         <ul className="mb-8 list-disc list-inside">
@@ -37,7 +37,7 @@ const AboutUsPage = () => {
           At Readit, our mission is to foster a vibrant and inclusive community of readers who are passionate about exploring the world through books. We believe in the transformative power of literature and aim to inspire a lifelong love for reading in every individual who visits our platform.
         </p>
         <p className="mb-8">
-          Join us on our literary journey, and let's embark on countless adventures through the pages of our favorite books together!
+          Join us on our literary journey, and let s embark on countless adventures through the pages of our favorite books together!
         </p>
       </div>
     </section>
