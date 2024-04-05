@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    logged : false
+    logged : false,
+    create : false,
 }
 
 const loginSlice = createSlice({
@@ -11,10 +12,13 @@ const loginSlice = createSlice({
         checkLogged(state) {
             state.logged = !state.logged;
         },
+        checkCreate(state) {
+            state.create = !state.create;
+        },
     },
 });
 
-export const {checkLogged} = loginSlice.actions;
+export const {checkLogged , checkCreate} = loginSlice.actions;
 
 export default loginSlice.reducer;
 
