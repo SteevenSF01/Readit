@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchBookData = createAsyncThunk('user/fetchUserData', async () => {
-    const response = await fetch('https:/example-data.draftbit.com/books');
+    const response = await fetch('https://example-data.draftbit.com/books');
     const jsonData = await response.json();
     jsonData.forEach(book => {
         book.prix = parseFloat(Number(book.rating * 3).toFixed(2));
