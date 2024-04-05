@@ -1,26 +1,30 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchBookData } from "@/app/lib/features/data/data";
+import { toggleFavori } from "@/app/lib/features/favoris/favorisSlice";
 import { HeartIcon as CoeurVide } from "@heroicons/react/24/outline";
 import { HeartIcon as CoeurPlein } from "@heroicons/react/24/solid";
-import { toggleFavori } from "@/app/lib/features/favoris/favorisSlice";
-import LoginModal from "../loginModal/LoginModal";
-import { useState } from "react";
-import { merriweather, roboto } from "@/app/fonts";
-import Link from "next/link";
-import Image from "next/image";
-import "./bookcard.css";
 import { ajoutPanier } from "@/app/lib/features/cart/cartSlice";
+import { fetchBookData } from "@/app/lib/features/data/data";
+import { useSelector, useDispatch } from "react-redux";
+import { merriweather, roboto } from "@/app/fonts";
+import LoginModal from "../loginModal/LoginModal";
+import { useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import "./bookcard.css";
+
 
 export default function BookCard({ searchByInput, filters }) {
+  //useSelector
   const theme = useSelector((state) => state.theme.darkMode);
-  const dispatch = useDispatch();
   const logged = useSelector((state) => state.login.logged);
   const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
   const { data, loading, error } = useSelector((state) => state.book);
 
+  const dispatch = useDispatch();
+
   const [testComponents, setTestComponents] = useState(false);
 
+  // Filter the books
   const filterBooks = (books, searchInput, selectedFilter) => {
     return books.filter((book) => {
       const titleMatch = book.title
@@ -38,6 +42,7 @@ export default function BookCard({ searchByInput, filters }) {
     filteredBooks = filterBooks(data, searchByInput, filters);
   }
 
+  //useEffect pour le data
   useEffect(() => {
     dispatch(fetchBookData());
   }, [dispatch]);

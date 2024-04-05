@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     logged : false,
     create : false,
+    account : []
 }
 
 const loginSlice = createSlice({
@@ -15,10 +16,13 @@ const loginSlice = createSlice({
         checkCreate(state) {
             state.create = !state.create;
         },
+        ajoutCompte(state, action){
+            state.account.push(action.payload);
+        }
     },
 });
 
-export const {checkLogged , checkCreate} = loginSlice.actions;
+export const {checkLogged , checkCreate , ajoutCompte} = loginSlice.actions;
 
 export default loginSlice.reducer;
 

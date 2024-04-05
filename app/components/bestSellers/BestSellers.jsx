@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { roboto } from "@/app/fonts";
 
+//components for different categories
+
 export default function BestSellers({ books }) {
   return (
     <>

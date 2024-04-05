@@ -4,15 +4,36 @@ import { useSelector, useDispatch } from "react-redux";
 import { merriweather } from "../fonts";
 import { checkCreate } from "../lib/features/login/loginSlice";
 import Link from "next/link";
+import { ajoutCompte } from "../lib/features/login/loginSlice";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { checkLogged } from "../lib/features/login/loginSlice";
 
 export default function LoginPage() {
   const create = useSelector((state) => state.login.create);
-  console.log(create);
+  
   return <>{create ? <CreateLogin /> : <SigninLogin />}</>;
 }
+
+
 function SigninLogin() {
   const theme = useSelector((state) => state.theme.darkMode);
+  const compte = useSelector((state) => state.login.account);
+  const router = useRouter()
   const dispatch = useDispatch();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignIn = () => {
+    const user = compte.find((account) => account.username === username && account.password === password);
+    if (user) {
+      dispatch(checkLogged())
+      router.push("/home")
+    } else {
+      alert("Password or username are incorrect ");
+    }
+  };
   return (
     <>
       <section
@@ -56,26 +77,30 @@ function SigninLogin() {
             Sign in to explore, buy and manage books
           </p>
           <form className="flex flex-col gap-4 my-5">
-            <label htmlFor="text">
-              Username :
-              <input
-                type="text"
-                placeholder="Username"
-                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
-              />
-            </label>
-            <label htmlFor="password">
-              Password :
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
-              />
-            </label>
-          </form>
-          <button className="bg-[#F01D19] text-white px-28 py-4 rounded-xl">
-            Sign in
-          </button>
+          <label htmlFor="text">
+            Username :
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="text-black w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+            />
+          </label>
+          <label htmlFor="password">
+            Password :
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="text-black w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+            />
+          </label>
+        </form>
+        <button className="bg-[#F01D19] text-white px-28 py-4 rounded-xl" onClick={handleSignIn}>
+          Sign in
+        </button>
           <p className="mt-5 hover:underline hover:underline-offset-4 cursor-pointer ">
             Forgot your password?
           </p>
@@ -92,7 +117,7 @@ function SigninLogin() {
           </p>
           <p className="text-center">or</p>
           <p>
-            Continue as{" "}
+            Continue as
             <span className="font-semibold hover:underline hover:underline-offset-4 cursor-pointer">
               <Link href="/home">guest</Link>
             </span>
@@ -106,6 +131,33 @@ function SigninLogin() {
 function CreateLogin() {
   const theme = useSelector((state) => state.theme.darkMode);
   const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const compte = useSelector((state) => state.login.account);
+
+  console.log(compte);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      username.trim() !== "" ||
+      email.trim() !== "" ||
+      password.trim() !== "" 
+    ) {
+      dispatch(
+        ajoutCompte({
+          username: username,
+          email: email,
+          password: password,
+        })
+      );
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      dispatch(checkCreate())
+    }
+  };
   return (
     <>
       <section
@@ -148,37 +200,40 @@ function CreateLogin() {
           <p className="text-center mt-2 lg:mt-5 ">
             Sign in to explore, buy and manage books
           </p>
-          <form className="flex flex-col gap-2 my-5">
+          <form className="flex flex-col gap-2 my-5 " onSubmit={handleSubmit}>
             <label htmlFor="text">
               Username :
               <input
                 type="text"
                 placeholder="Username"
-                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+                onChange={(e)=> setUsername(e.target.value) }
+                className="text-black w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+              />
+            </label>
+            <label htmlFor="email">
+              email :
+              <input
+                type="text"
+                placeholder="email"
+                onChange={(e)=> setEmail(e.target.value) }
+                className="text-black w-full px-4 py-2 lg:py-3 rounded-xl border-2"
               />
             </label>
             <label htmlFor="password">
-              {" "}
               Password :
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
+                onChange={(e)=> setPassword(e.target.value) }
+                className="text-black w-full px-4 py-2 lg:py-3 rounded-xl border-2"
               />
             </label>
-            <label htmlFor="password">
-              Repeat Password :
-              <input
-                type="password"
-                placeholder="Repeat Password"
-                className="w-full px-4 py-2 lg:py-3 rounded-xl border-2"
-              />
-            </label>
-          </form>
-          <button className="bg-[#F01D19] text-white px-28 py-4 rounded-xl">
+          <button className="bg-[#F01D19] text-white px-28 py-4 rounded-xl mt-3" type="submit" 
+>
             Create
           </button>
-          <div className="flex items-center mt-5 justify-between">
+          </form>
+          <div className="flex items-center justify-between">
             <p className="hover:underline hover:underline-offset-4 cursor-pointer ">
               Forgot your password?
             </p>

@@ -5,7 +5,7 @@ export default function LoginModal({setTestComponents}) {
     const router = useRouter()
     const theme  = useSelector((state) => state.theme.darkMode)
   return (
-      <div className={` p-8 rounded-lg shadow-lg z-50 w-[70%] md:w-[30%] md:h-[30%] flex flex-col gap-y-5 ${theme? 'bg-[#323232] text-white ':'bg-white text-[#161616]'}`}>
+      <div className={` p-8 rounded-lg shadow-lg z-50 w-[70%] md:w-[50%] lg:h-[30%] flex flex-col gap-y-5 ${theme? 'bg-[#323232] text-white ':'bg-white text-[#161616]'}`}>
         <h2 className="text-xl font-bold mb-4">Login Required</h2>
         <p className="mb-4">
           You need to be logged in to add to favorites.

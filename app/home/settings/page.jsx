@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { merriweather } from "@/app/fonts";
 import { useRouter } from "next/navigation";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import FavorisHome from "@/app/components/myFavorites/MyFavorites";
+import { checkLogged } from "@/app/lib/features/login/loginSlice";
 
 const UserSettingsPage = () => {
   const router = useRouter();
   const theme = useSelector((state) => state.theme.darkMode);
   const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
   const [selectedOption, setSelectedOption] = useState(null);
+  const dispatch = useDispatch()
 
   const optionSettings = (option) => {
     setSelectedOption(option);
@@ -72,6 +74,12 @@ const UserSettingsPage = () => {
                       onClick={() => optionSettings("Favorites")}
                     >
                       Favorites
+                    </button>
+                    <button
+                      className="bg-[#E00404] text-white w-[45%] md:w-full  py-2 rounded-xl cursor-pointer text-lg font-semibold"
+                      onClick={() => {router.push('/login'); dispatch(checkLogged(false))}}
+                    >
+                      Log out
                     </button>
                   </ul>
                 </div>
