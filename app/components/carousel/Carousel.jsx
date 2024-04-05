@@ -59,7 +59,7 @@ const Carousel = () => {
   return (
     <div className={`mb-5 flex flex-col items-center justify-center ${theme ? 'bg-[#323232]' :'bg-[#efeeee]'} bg-opacity-20`}>
       {/* Carousel container */}
-      <div className="w-full md:w-[80%] lg:w-[60%] h-60 md:h-96 lg:h-[500px] flex bg-[#323232] rounded-md overflow-hidden relative justify-center items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+      <div className="w-full md:w-[50%] lg:w-[30%] h-60 md:h-96 lg:h-[500px] flex bg-[#323232] rounded-md overflow-hidden relative justify-center items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
         {!showImages && <p className="text-white">Loading...</p>}
         {/* Image container */}
         <div

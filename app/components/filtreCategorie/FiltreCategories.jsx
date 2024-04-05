@@ -2,12 +2,21 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { roboto } from "@/app/fonts";
+import Aos from "aos";
+import './../../../node_modules/aos/dist/aos'
 //css pour la scrollbar
 import "./Filtre.css";
 //Data de l'api
 import { fetchBookData } from "@/app/lib/features/data/data";
 
 export default function FiltreCategories({ onFilterChange }) {
+  useEffect(() => {
+    Aos.init({
+      duration: 500,
+      easing: "ease-in"
+    });
+  }, []);
+
   const theme = useSelector((state) => state.theme.darkMode);
 
   const [selectedFilter, setSelectedFilter] = useState("All");
@@ -66,7 +75,7 @@ export default function FiltreCategories({ onFilterChange }) {
 
   return (
     <>
-      <section className="flex justify-center">
+      <section className="flex justify-center" data-aos= 'fade-in'>
         <div className="scrollBar-thumb h-[200px] flex flex-wrap justify-center gap-5  overflow-y-scroll w-[100%] pb-10 relative">
           {uniqueGenres &&
             uniqueGenres.map((genre, i) => {
@@ -79,7 +88,7 @@ export default function FiltreCategories({ onFilterChange }) {
                       : "bg-white text-[#323232] border-2 border-[#323232] shadow-[0_3px_10px_rgb(0,0,0,0.5)] "
                   } px-5 py-2 rounded-xl text-[15px] w-[45%] md:w-[20%] lg:w-[15%] h-[35%] ${
                     roboto.className
-                  } ${selectedFilter.includes(genre) ? "selected" : ""}`}
+                  } ${selectedFilter.includes(genre) ? "selected" : ""}`} 
                   key={i}
                 >
                   {genre}

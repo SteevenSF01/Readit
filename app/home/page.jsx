@@ -1,8 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { merriweather } from "../fonts";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import Aos from "aos";
+import './../../node_modules/aos/dist/aos.css';
 import Carousel from "../components/carousel/Carousel";
 import FiltreCategories from "../components/filtreCategorie/FiltreCategories";
 import FavorisHome from "../components/myFavorites/MyFavorites";
@@ -18,6 +20,14 @@ export default function HomePage() {
   const searchByInput = useSelector((state) => state.filter.searchBook);
   const dispatch = useDispatch();
   const arrayFavoris = useSelector((state) => state.favoris.arrayFavoris);
+
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      easing: "ease-in"
+    });
+  }, []);
+  
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -38,7 +48,7 @@ export default function HomePage() {
         } h-full ${merriweather.className}`}
         style={{ padding: "20px" }}
       >
-        <div className="md:mt-10">
+        <div className="md:mt-10" data-aos="fade-up" data-aos-duration="2000">
           <Carousel />
         </div>
         <div className="">
@@ -76,7 +86,7 @@ export default function HomePage() {
             <div
               className={`my-5 lg:my-2 py-5 ${
                 theme ? "bg-[#161616]" : "bg-[#efeeee] shadow-[inset_0px_2px_5px_5px_#00000024] "
-              } rounded-lg`}
+              } rounded-lg `} 
             >
               <FiltreCategories onFilterChange={handleFilterChange} />
             </div>
@@ -93,10 +103,10 @@ export default function HomePage() {
             } py-2 lg:py-4 w-full md:w-[50%] lg:w-[40%] px-5  rounded-xl`}
           />
         </div>
-        <div className="mt-12">
+        <div className="mt-12" data-aos="fade-in">
           <BookCard searchByInput={searchByInput} filters={filter} />
         </div>
-        <div className="mb-5 mt-16">
+        <div className="mb-5 mt-16" data-aos= "fade-out">
           <Newsletter />
         </div>
         <Footer />

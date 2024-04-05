@@ -60,7 +60,7 @@ export default function BookCard({ searchByInput, filters }) {
           !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
         } rounded-xl pb-5`}
       >
-        <h1 className={`ps-5 p-5 ${theme ? '' : 'bg-[#003049] text-white'} rounded-t-lg`}>
+        <h1 className={`ps-5 pt-5 pb-2 ${theme ? '' : 'bg-[#003049] text-white'} rounded-t-lg`}>
           <strong>{filters.length === 0 ? 'All' : filters} </strong>
         </h1>
         <div className={`flex flex-wrap justify-center py-10 gap-5 h-[400px] md:h-[500px] lg:h-[600px] overflow-y-scroll scrollBar-thumb relative ${theme ? '' : 'bg-[#efeeee]'}`}>
@@ -128,7 +128,7 @@ export default function BookCard({ searchByInput, filters }) {
                     </ul>
                     <Link href={`/home/details/${book.id - 1}`}>
                       <button
-                        className={`bg-[#E00404] text-white absolute bottom-5 text-[12px] right-5 md:right-10 lg:right-12 px-4 py-1 rounded-xl ${merriweather.className}`}
+                        className={`bg-[#E00404] text-white absolute bottom-5 text-[12px] right-5 md:right-10 lg:right-14 px-4 py-1 rounded-xl ${merriweather.className}`}
                       >
                         More details
                       </button>
