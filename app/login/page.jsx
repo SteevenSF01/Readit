@@ -98,16 +98,16 @@ function SigninLogin() {
             />
           </label>
         </form>
-        <button className="bg-[#F01D19] text-white px-28 py-4 rounded-xl" onClick={handleSignIn}>
+        <button className="bg-[#F01D19] text-white px-5 md:px-28 py-2 md:py-4 rounded-xl" onClick={handleSignIn}>
           Sign in
         </button>
           <p className="mt-5 hover:underline hover:underline-offset-4 cursor-pointer ">
             Forgot your password?
           </p>
         </div>
-        <div className="flex justify-between  absolute bottom-6  right-0 px-5 w-full lg:justify-around">
+        <div className="flex justify-between text-[12px] absolute bottom-6  right-0 px-5 w-full lg:justify-around">
           <p className=" flex flex-col leading-4">
-            Need an account?{" "}
+            Need an account?
             <span
               className="font-semibold hover:underline hover:underline-offset-4 cursor-pointer"
               onClick={() => dispatch(checkCreate())}

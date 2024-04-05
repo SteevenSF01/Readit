@@ -58,7 +58,7 @@ export default function HomePage() {
                 arrayFavoris.length == 0 ? "h-[100px]" : "min-h-[250px]"
               } ${
                 !theme
-                  ? "bg-[#0B7285] text-[#323232] "
+                  ? "bg-[#efeeee] border-2 border-[#E00404] text-[#323232] "
                   : " bg-[#323232] text-white "
               } w-full flex overflow-x-scroll items-center gap-x-5 px-5 rounded-xl scrollBar-thumb`}
             >
@@ -75,7 +75,7 @@ export default function HomePage() {
             </h1>
             <div
               className={`my-5 lg:my-2 py-5 ${
-                theme ? "bg-[#161616]" : "bg-[#c80d19] bg-opacity-95"
+                theme ? "bg-[#161616]" : "bg-[#efeeee] shadow-[inset_0px_2px_5px_5px_#00000024] "
               } rounded-lg`}
             >
               <FiltreCategories onFilterChange={handleFilterChange} />

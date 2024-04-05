@@ -128,7 +128,7 @@ export default function BookCard({ searchByInput, filters }) {
                     </ul>
                     <Link href={`/home/details/${book.id - 1}`}>
                       <button
-                        className={`bg-[#E00404] text-white absolute bottom-5 right-4 md:right-10 lg:right-12 px-4 py-1 rounded-xl ${merriweather.className}`}
+                        className={`bg-[#E00404] text-white absolute bottom-5 text-[12px] right-5 md:right-10 lg:right-12 px-4 py-1 rounded-xl ${merriweather.className}`}
                       >
                         More details
                       </button>

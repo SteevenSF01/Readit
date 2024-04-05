@@ -30,7 +30,7 @@ const UserSettingsPage = () => {
           <div
             className={`${
               theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
-            } ${merriweather.className} h-screen p-10 w-full`}
+            } ${merriweather.className} h-fit md:h-screen p-10 w-full`}
           >
             <button
               className="bg-[#E00404] text-white mb-5 p-1 rounded-lg"
@@ -42,8 +42,8 @@ const UserSettingsPage = () => {
               <h1 className="text-3xl font-bold mb-8 lg:ps-32">
                 User Settings
               </h1>
-              <div className="flex w-full justify-between">
-                <div className="w-[50%] lg:flex lg:justify-end ">
+              <div className="flex w-full justify-center md:justify-between flex-wrap md:flex-nowrap ">
+                <div className="w-full mb-5 md:w-[50%] lg:flex lg:justify-end ">
                   <ul className="flex flex-wrap gap-5 md:flex-col items-start w-full md:w-[80%] ">
                     <button
                       className="bg-[#E00404] text-white w-[45%] md:w-full  py-2 rounded-xl cursor-pointer text-lg font-semibold"
@@ -85,7 +85,7 @@ const UserSettingsPage = () => {
                 </div>
                 <div className="w-[60%] flex justify-center items-center">
                   <div className="avatar online ">
-                    <div className="w-72 rounded-full">
+                    <div className="w-[90%] md:w-72 rounded-full">
                       <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                     </div>
                   </div>

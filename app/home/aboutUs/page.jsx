@@ -11,7 +11,7 @@ const AboutUsPage = () => {
         theme ? 'bg-black text-white' : 'bg-[#efeeee] text-black'
       } h-fit py-10 flex flex-col items-center justify-center`}
     >
-      <div className="max-w-3xl text-center">
+      <div className="max-w-3xl text-center px-5">
         <h1 className="text-3xl font-bold mb-8 underline underline-offset-4 decoration-[#E00404]">About Us</h1>
         <p className="mb-8">
           Welcome to Readit, your ultimate destination for all things related to books and reading! At Readit, we re passionate about literature and are dedicated to providing book lovers with a platform to discover, explore, and indulge in their love for reading.
@@ -25,7 +25,7 @@ const AboutUsPage = () => {
           At Readit, we strive to make your reading experience enjoyable and convenient. Whether you re looking for recommendations, wanting to share your favorite reads, or seeking a cozy corner to immerse yourself in the world of literature, we ve got you covered. Our platform offers a plethora of features and services designed to enhance your reading journey.
         </p>
         <h2 className="text-2xl font-bold mb-4 underline underline-offset-4 decoration-[#E00404]">What You Can Do Here</h2>
-        <ul className="mb-8 list-disc list-inside">
+        <ul className="mb-8 list-disc list-inside text-start">
           <li>Discover New Books: Explore our extensive collection of books across various genres, from classics to contemporary bestsellers.</li>
           <li>Connect with Fellow Readers: Join book clubs, engage in discussions, and connect with like-minded readers from around the globe.</li>
           <li>Share Your Thoughts: Write reviews, rate books, and share your opinions to help other readers discover their next favorite read.</li>

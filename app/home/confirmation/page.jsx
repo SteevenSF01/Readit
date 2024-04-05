@@ -9,7 +9,7 @@ const OrderConfirmationPage = () => {
     <section
       className={`${
         theme ? 'bg-black text-white' : 'bg-white text-black'
-      } h-screen flex flex-col items-center justify-center`}
+      } h-screen flex flex-col items-center justify-center px-5`}
     >
       <h1 className="text-3xl font-bold mb-8">
         Thank you for your order!
