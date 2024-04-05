@@ -30,7 +30,7 @@ const UserSettingsPage = () => {
           <div
             className={`${
               theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
-            } ${merriweather.className} h-fit md:h-screen p-10 w-full`}
+            } ${merriweather.className} h-screen p-10 w-full`}
           >
             <button
               className="bg-[#E00404] text-white mb-5 p-1 rounded-lg"

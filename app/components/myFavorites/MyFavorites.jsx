@@ -19,7 +19,7 @@ export default function FavorisHome() {
           return (
             <div
               className={`${
-                !theme ? "bg-white text-[#323232] " : " bg-black text-white "
+                !theme ? "bg-white text-[#161616] shadow-[0_3px_10px_rgb(0,0,0,0.2)] border-2 border-[#E00404] " : " bg-[#323232] text-white "
               } rounded-xl  h-[200px] w-fit flex `}
               key={i}
             >

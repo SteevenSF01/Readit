@@ -55,10 +55,10 @@ export default function HomePage() {
             </h1>
             <div
               className={`${
-                arrayFavoris.length == 0 ? "h-[100px]" : "min-h-[250px]"
+                arrayFavoris.length == 0 ? "h-[100px] border-[#E00404] " : "min-h-[250px]"
               } ${
                 !theme
-                  ? "bg-[#efeeee] border-2 border-[#E00404] text-[#323232] "
+                  ? "bg-[#efeeee] border-2  text-[#323232] "
                   : " bg-[#323232] text-white "
               } w-full flex overflow-x-scroll items-center gap-x-5 px-5 rounded-xl scrollBar-thumb`}
             >
