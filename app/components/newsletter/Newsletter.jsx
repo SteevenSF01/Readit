@@ -7,10 +7,10 @@ export default function Newsletter() {
     <section
       className={`${
         theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
-      }`}
+      } rounded-lg`}
     >
-      <div className="py-8 px-4 mx-auto max-w-screen-xl md:w-[100%] lg:py-16 lg:px-6 bg-[#323232] bg-opacity-45 rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-        <div className="mx-auto max-w-screen-md sm:text-center md:w-[50%] text-white ">
+      <div className={`${theme ? 'bg-[#323232]' : 'bg-[#efeeee] text-[#161616]'} py-8 px-4 mx-auto max-w-screen-xl md:w-[100%] lg:py-16 lg:px-6 bg-opacity-45 rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
+        <div className="mx-auto max-w-screen-md sm:text-center md:w-[50%]  ">
           <h2
             className={`mb-4 text-3xl tracking-tight font-extrabold  sm:text-4xl ${merriweather.className}`}
           >

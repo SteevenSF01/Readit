@@ -22,18 +22,19 @@ export default function Navbar() {
   };
 
   const links = [
-    { name: "home", href: "/home" },
-    { name: "genres", href: "/home/genres" },
-    { name: "contact", href: "/home/contact" },
-    { name: "checkout", href: "/home/checkout" },
+    { name: "Home", href: "/home" },
+    { name: "Genres", href: "/home/genres" },
+    { name: "Contact", href: "/home/contact" },
+    { name: "About Us", href: "/home/aboutUs" },
+    { name: "Checkout", href: "/home/checkout" },
     { name: <UserIcon className="w-6 h-6" />, href: "/home/settings" },
   ];
 
   return (
     <nav
       className={`${
-        theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
-      } py-3 px-5 flex justify-end relative items-center shadow-[0px_1px_5px_0px_#f7fafc]`}
+        theme ? "bg-[#161616] text-white" : "bg-[#efeeee] text-[#161616] "
+      } py-3 px-5 flex justify-end relative items-center shadow-[0px_1px_5px_0px_#c1121F]`}
     >
       <div className="flex gap-x-4 w-full ">
         <h1

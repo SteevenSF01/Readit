@@ -33,11 +33,11 @@ const ContactPage = () => {
 
   return (
     <>
-      <section className={`${theme ? "bg-[#161616]" : "bg-white"} pt-10`}>
+      <section className={`${theme ? "bg-[#161616]" : "bg-white"} pt-10 flex flex-col items-center`}>
         <div
           className={`${
-            theme ? "bg-[#161616] text-white" : "bg-white text-[#161616]"
-          } flex flex-col items-center justify-center h-fit mx-5 mb-5  p-5 rounded-lg`}
+            theme ? "bg-[#323232] text-white" : " bg-[#efeeee] text-[#161616]"
+          } flex flex-col items-center justify-center h-fit mx-5 mb-5  px-5 py-7 rounded-lg md:w-[70%]`}
         >
           <h1 className="text-3xl font-bold mb-8 pt-5">Contact Us</h1>
           <form onSubmit={handleSubmit} className="w-full max-w-md">

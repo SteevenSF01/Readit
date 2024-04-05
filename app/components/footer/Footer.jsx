@@ -8,7 +8,7 @@ export default function Footer() {
     <footer
       className={`footer footer-center p-10 mt-10 border-t-2  ${
         theme ? "bg-[#161616] text-white" : "bg-white text-[#161616]"
-      }`}
+      } rounded-lg`}
     >
       <nav className="grid grid-flow-col gap-4">
         

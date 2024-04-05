@@ -6,7 +6,7 @@ import { HeartIcon as CoeurPlein } from "@heroicons/react/24/solid";
 import { toggleFavori } from "@/app/lib/features/favoris/favorisSlice";
 import LoginModal from "../loginModal/LoginModal";
 import { useState } from "react";
-import { roboto } from "@/app/fonts";
+import { merriweather, roboto } from "@/app/fonts";
 import Link from "next/link";
 import Image from "next/image";
 import "./bookcard.css";
@@ -55,10 +55,10 @@ export default function BookCard({ searchByInput, filters }) {
           !theme ? "bg-white text-[#323232] " : " bg-[#323232] text-white "
         } rounded-xl pb-5`}
       >
-        <h1 className="ps-5 pt-5 my-5">
+        <h1 className={`ps-5 p-5 ${theme ? '' : 'bg-[#003049] text-white'} rounded-t-lg`}>
           <strong>{filters.length === 0 ? 'All' : filters} </strong>
         </h1>
-        <div className="flex flex-wrap justify-center gap-5 h-[400px] md:h-[500px] lg:h-[600px] overflow-y-scroll scrollBar-thumb relative ">
+        <div className={`flex flex-wrap justify-center py-10 gap-5 h-[400px] md:h-[500px] lg:h-[600px] overflow-y-scroll scrollBar-thumb relative ${theme ? '' : 'bg-[#efeeee]'}`}>
           {testComponents && !logged && (
             <div
               className={`w-full h-screen bg-black fixed top-0 right-0 bg-opacity-55 backdrop-blur-md flex justify-center items-center z-40`}
@@ -75,7 +75,7 @@ export default function BookCard({ searchByInput, filters }) {
                 <div
                   className={`${
                     !theme
-                      ? "bg-white text-[#323232] "
+                      ? "bg-[#003049] text-white "
                       : " bg-black text-white "
                   } rounded-xl overflow-hidden w-[45%] h-[280px] md:w-[28%] lg:w-[15%] lg:shadow-[0_3px_10px_rgb(0,0,0,0.8)] `}
                   key={i}
@@ -93,7 +93,7 @@ export default function BookCard({ searchByInput, filters }) {
                       <CoeurVide
                         className="w-10 h-10 absolute top-2  left-2  text-[#E00404] "
                         onClick={() =>
-                          !logged
+                          logged
                             ? dispatch(toggleFavori(book))
                             : setTestComponents(true)
                         }
@@ -123,7 +123,7 @@ export default function BookCard({ searchByInput, filters }) {
                     </ul>
                     <Link href={`/home/details/${book.id - 1}`}>
                       <button
-                        className={`bg-[#E00404] text-white absolute bottom-5 right-4 md:right-10 lg:right-12 px-4 py-1 rounded-xl ${roboto.className}`}
+                        className={`bg-[#E00404] text-white absolute bottom-5 right-4 md:right-10 lg:right-12 px-4 py-1 rounded-xl ${merriweather.className}`}
                       >
                         More details
                       </button>

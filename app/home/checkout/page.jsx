@@ -24,7 +24,7 @@ const CheckoutPage = () => {
     <>
       <section
         className={`${
-          theme ? "bg-[#161616] text-white" : "bg-white text-[#161616] "
+          theme ? "bg-[#161616] text-white" : "bg-[#efeeee] text-[#161616] "
         } ${books.length === 0 ? 'h-screen' : ''} pt-5`}
       >
         <h1 className="text-center text-3xl font-bold mb-8">Checkout</h1>
@@ -33,7 +33,7 @@ const CheckoutPage = () => {
             <div className="flex flex-col items-center gap-5">
               <p>Nothing in the basket</p>
               <button
-                className="bg-[#E00404] px-5 py-2 rounded-xl"
+                className="bg-[#E00404] text-white px-5 py-2 rounded-xl"
                 onClick={()=>router.push("/home")}
               >
                 continue shopping
@@ -86,7 +86,7 @@ const CheckoutPage = () => {
             })}
         </div>
         <div className={`${books.length === 0 ? 'hidden' : 'flex'} justify-center pb-5 `}>
-        <button className="bg-[#E00404] px-10 py-2 rounded-xl" disabled={prixTotal === 0}>Buy {prixTotal}€</button>
+        <button className="bg-[#E00404] text-white px-10 py-2 rounded-xl" disabled={prixTotal === 0} onClick={()=> router.push('/home/confirmation')}>Buy {prixTotal}€</button>
         </div>
       </section>
     </>
